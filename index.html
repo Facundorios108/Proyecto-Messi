@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- Cambiado a "en" para inglés -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +17,10 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 100%; /* Cambiado para que sea responsivo */
-            width: 90%; /* Añadido para evitar que el ancho sea demasiado grande */
+            max-width: 100%;
+            width: 90%;
             margin: 50px auto;
+            position: relative;
         }
 
         img {
@@ -50,7 +51,11 @@
         /* Estilos para pantallas de tamaño pequeño (móviles) */
         @media screen and (max-width: 480px) {
             .container {
-                margin: 20px; /* Ajusta el margen para un aspecto mejor en pantallas pequeñas */
+                margin: 20px;
+            }
+            .button-barcelona {
+                top: 20px;
+                right: 20px;
             }
         }
 
@@ -59,30 +64,17 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            z-index: 1; /* Para que el botón esté por encima del contenido */
-        }
-
-        /* Estilos para el botón en pantallas pequeñas */
-        @media screen and (max-width: 480px) {
-            .container {
-                margin: 20px;
-            }
-            .button-barcelona {
-                top: 20px;
-                right: 20px;
-            }
-        
+            z-index: 1;
         }
     </style>
     <title>Página de Fútbol</title>
 </head>
 <body>
     <div class="container">
-        <div class="container">
-            <a href="messi_page.html" class="button button">Barcelona</a>
-            <img src="000_334P84K-1024x683.jpg" alt="Messi jugando para el Barcelona en 2015">
-            <p>El mejor jugador de la historia</p>
-            <a href="https://www.google.com" class="button">Exit</a>
+        <a href="messi_page.html" class="button button-barcelona">Barcelona</a>
+        <img src="000_334P84K-1024x683.jpg" alt="Messi jugando para el Barcelona en 2015">
+        <p>El mejor jugador de la historia</p>
+        <a href="https://www.google.com" class="button">Exit</a>
     </div>
 </body>
 </html>
