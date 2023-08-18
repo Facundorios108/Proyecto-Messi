@@ -53,6 +53,23 @@
                 margin: 20px; /* Ajusta el margen para un aspecto mejor en pantallas pequeñas */
             }
         }
+
+        /* Estilos para el botón en la esquina superior derecha */
+        .button-barcelona {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1; /* Para que el botón esté por encima del contenido */
+        }
+
+        /* Estilos para el botón en pantallas pequeñas */
+        @media screen and (max-width: 480px) {
+            .button-barcelona {
+                top: 20px;
+                right: 20px;
+            }
+        
+        }
     </style>
     <title>Página de Fútbol</title>
 </head>
