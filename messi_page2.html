@@ -35,11 +35,11 @@
             margin-bottom: 20px;
         }
 
-        /* Button styles */
-        .button {
+       /* Button styles */
+       .button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #1a2434;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -48,7 +48,38 @@
         }
 
         .button:hover {
-            background-color: #0056b3;
+            background: linear-gradient(90deg, #e3dbfa 0, #1a2434);
+            background-size: 200% 100%;
+            animation: gradient-shift 1s linear infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Badge styles */
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #1a2434;
+            color: white;
+            border-radius: 5px;
+            margin-left: 5px; /* Space between the text and badge */
+         }
+
+         /* Align specific paragraphs to the left */
+         .left-aligned {
+            text-align: left;
+        }
+
+          /* Centered text styles */
+          .centered-text {
+            text-align: center;
         }
 
         /* Styles for small screens */
@@ -63,7 +94,11 @@
 <body>
     <div class="container">
         <img src="MessiPSG.jpg" alt="Messi in an unfortunate place">
-        <p>An unfortunate place for Leo</p>
+        <p class="centered-text">An unfortunate place for Leo</p>
+        <p class="left-aligned">Partidos: <span class="badge">75</span></p>
+        <p class="left-aligned">Goles: <span class="badge">32</span></p>
+        <p class="left-aligned">Asistencias: <span class="badge">34</span></p>
+        <p class="left-aligned">Titulos: <span class="badge">3</span></p>
         <a href="index.html" class="button">Back</a>
     </div>
 </body>

@@ -39,7 +39,7 @@
         .button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #F5B6CD;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -48,7 +48,33 @@
         }
 
         .button:hover {
-            background-color: #0056b3;
+            background: linear-gradient(90deg, #ffffff 0, #F5B6CD);
+            background-size: 200% 100%;
+            animation: gradient-shift 1s linear infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+         /* Badge styles */
+         .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #F5B6CD;
+            color: white;
+            border-radius: 5px;
+            margin-left: 5px; /* Space between the text and badge */
+         }
+
+         /* Align specific paragraphs to the left */
+        .left-aligned {
+            text-align: left;
         }
 
         /* Styles for small screens */
@@ -63,7 +89,11 @@
 <body>
     <div class="container">
         <img src="messi-messi-inter-de-miami.gif" alt="Is doing well...">
-        <p>Is doing well...</p>
+        <p class="centered-text">Is doing well...</p>
+        <p class="left-aligned">Partidos: <span class="badge">7</span></p>
+        <p class="left-aligned">Goles: <span class="badge">10</span></p>
+        <p class="left-aligned">Asistencias: <span class="badge">1</span></p>
+        <p class="left-aligned">Titulos: <span class="badge">1</span></p>
         <a href="index.html" class="button">Back</a>
     </div>
 </body>
