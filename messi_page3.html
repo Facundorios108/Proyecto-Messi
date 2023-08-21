@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messi Page</title>
     <style>
-        /* Global styles */
+        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -12,16 +13,16 @@
             background-color: #f2f2f2;
         }
 
-        /* Main content styles */
+        /* Main Content Styles */
         .container {
+            max-width: 90%;
+            width: 85%;
+            margin: 50px auto;
             text-align: center;
             padding: 20px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 90%;
-            width: 85%;
-            margin: 50px auto;
         }
 
         img {
@@ -35,20 +36,20 @@
             margin-bottom: 20px;
         }
 
-        /* Button styles */
+        /* Button Styles */
         .button {
             display: inline-block;
             padding: 10px 20px;
-            background: #F5B6CD;
+            background-color: #F5B6CD; /* Cambio aquí */
             color: white;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
-            margin-top: 10px; /* Space between paragraph and button */
+            margin-top: 10px;
         }
 
         .button:hover {
-            background: linear-gradient(90deg, #ffffff 0, #F5B6CD);
+            background: linear-gradient(90deg, #ffffff, #F5B6CD); /* Cambio aquí */
             background-size: 200% 100%;
             animation: gradient-shift 1s linear infinite;
         }
@@ -62,38 +63,37 @@
             }
         }
 
-         /* Badge styles */
-         .badge {
+        /* Badge Styles */
+        .badge {
             display: inline-block;
             padding: 5px 10px;
             background-color: #F5B6CD;
             color: white;
             border-radius: 5px;
-            margin-left: 5px; /* Space between the text and badge */
-         }
+            margin-left: 5px;
+        }
 
-         /* Align specific paragraphs to the left */
+        /* Align Specific Paragraphs */
         .left-aligned {
             text-align: left;
         }
 
-        /* Styles for small screens */
+        /* Media Queries */
         @media screen and (max-width: 480px) {
             .container {
                 margin: 20px;
             }
         }
     </style>
-    <title>Messi Page</title>
 </head>
 <body>
     <div class="container">
         <img src="messi-messi-inter-de-miami.gif" alt="Is doing well...">
-        <p class="centered-text">Is doing well...</p>
+        <p class="centered-text">Is Doing Well...</p>
         <p class="left-aligned">Partidos: <span class="badge">7</span></p>
         <p class="left-aligned">Goles: <span class="badge">10</span></p>
         <p class="left-aligned">Asistencias: <span class="badge">1</span></p>
-        <p class="left-aligned">Titulos: <span class="badge">1</span></p>
+        <p class="left-aligned">Títulos: <span class="badge">1</span></p>
         <a href="index.html" class="button">Back</a>
     </div>
 </body>
