@@ -7,56 +7,92 @@
     <style>
         /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
+            background-color: #eaeaea;
+            color: #333;
         }
 
         /* Main Content Styles */
         .container {
-            max-width: 90%;
-            width: 85%;
+            max-width: 80%;
             margin: 50px auto;
             text-align: center;
-            padding: 20px;
-            background-color: white;
+            padding: 30px;
+            background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             position: relative;
         }
 
         img {
             max-width: 100%;
             height: auto;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         p {
-            font-size: 18px;
+            font-size: 20px;
             margin-bottom: 20px;
         }
 
         /* Button Styles */
         .button {
             display: inline-block;
-            padding: 10px 20px;
+            width: 60px; /* Restaurar el tamaño original del botón */
+            height: 60px; /* Restaurar el tamaño original del botón */
             background-color: #007bff;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            margin-bottom: 10px;
+            border-radius: 50%;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-bottom: 20px; /* Aumentar el margen inferior para separar los botones */
+            text-align: center;
+            line-height: 60px; /* Ajustar la alineación del texto */
+            overflow: hidden; /* Asegurar que la imagen no se desborde */
+            display: flex; /* Usar flexbox para centrar la imagen */
+            align-items: center; /* Centrar verticalmente */
+            justify-content: center; /* Centrar horizontalmente */
+            z-index: 1; /* Asegurar que los botones queden por delante de la imagen */
+        }
+
+        .button img {
+            width: 100%; /* Ajustar el tamaño de la imagen */
+            height: auto; /* Mantener la proporción de la imagen */
+            border-radius: 50%;
+            display: block; /* Asegurar que la imagen sea un bloque */
+            margin: auto; /* Centrar la imagen dentro del botón */
+        }
+
+        .button-psg img {
+            width: 70%; /* Mantener el tamaño de la imagen de PSG */
         }
 
         .button:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Fade-in Effect */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
         /* Media Queries */
         @media screen and (max-width: 480px) {
             .container {
                 margin: 20px;
+                padding: 20px;
             }
         }
 
@@ -66,21 +102,43 @@
         .button-psg,
         .button-inter {
             position: absolute;
-            top: 65px;
             right: 10px;
-            z-index: 0;
-        }
-
-        .button-psg {
-            top: 120px;
-        }
-
-        .button-inter {
-            top: 175px;
+            z-index: 1; /* Asegurar que los botones queden por delante de la imagen */
         }
 
         .button-seleccion {
             top: 10px;
+        }
+
+        .button-barcelona {
+            top: 75px; /* Ajustar la posición para separar los botones */
+        }
+
+        .button-psg {
+            top: 140px; /* Ajustar la posición para separar los botones */
+        }
+
+        .button-inter {
+            top: 205px; /* Ajustar la posición para separar los botones */
+        }
+
+        .button-exit {
+            display: block;
+            margin: 20px auto; /* Centrar el botón de exit */
+            width: auto;
+            height: auto;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            text-align: center;
+        }
+
+        .button-exit:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
         }
 
         /* Badge Styles */
@@ -99,23 +157,31 @@
         }
 
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="button-container">
-            <a href="messi_page4.html" class="button button-seleccion">Selección</a>
-            <a href="messi_page.html" class="button button-barcelona">Barcelona</a>
-            <a href="messi_page2.html" class="button button-psg">PSG</a>
-            <a href="messi_page3.html" class="button button-inter">Inter</a>
-            
+            <a href="messi_page4.html" class="button button-seleccion">
+                <img src="EscudoAFA.png" alt="Selección">
+            </a>
+            <a href="messi_page.html" class="button button-barcelona">
+                <img src="EscudoBar.png" alt="Barcelona">
+            </a>
+            <a href="messi_page2.html" class="button button-psg">
+                <img src="EscudoPSG.png" alt="PSG" style="width: 70%; height: auto;">
+            </a>
+            <a href="messi_page3.html" class="button button-inter">
+                <img src="EscudoInt.png" alt="Inter">
+            </a>
         </div>
-        <img src="000_334P84K-1024x683.jpg" alt="Messi playing for Barcelona in 2015">
+        <img src="000_334P84K-1024x683.jpg" alt="Messi playing for Barcelona in 2015" class="fade-in">
         <p>The greatest player in history</p>
         <p class="left-aligned">Partidos: <span class="badge">1055</span></p>
         <p class="left-aligned">Goles: <span class="badge">824</span></p>
         <p class="left-aligned">Asistencias: <span class="badge">364</span></p>
         <p class="left-aligned">Títulos: <span class="badge">44</span></p>
-        <a href="https://www.google.com" class="button">Exit</a>
+        <a href="https://www.google.com" class="button-exit">Exit</a>
     </div>
 </body>
 </html>
