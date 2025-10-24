@@ -1,0 +1,292 @@
+/* 
+ * Proyecto Messi - CSS Unificado
+ * Estilos globales y específicos para todas las páginas
+ */
+
+/* ===== IMPORTAR FUENTES ===== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* ===== ESTILOS GLOBALES ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eaeaea;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.container {
+    max-width: 90%;
+    width: 85%;
+    margin: 50px auto;
+    text-align: center;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* ===== IMÁGENES ===== */
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== TEXTO ===== */
+p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.left-aligned {
+    text-align: left;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+/* ===== BOTONES GENERALES ===== */
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    margin: 10px 5px;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== BOTONES CIRCULARES (PÁGINA PRINCIPAL) ===== */
+.button-round {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 60px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button-round img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    margin: 0;
+    box-shadow: none;
+}
+
+.button-round:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* ===== POSICIONAMIENTO DE BOTONES CIRCULARES ===== */
+.button-seleccion { top: 10px; }
+.button-barcelona { top: 75px; }
+.button-psg { top: 140px; }
+.button-inter { top: 205px; }
+
+/* Botón PSG específico */
+.button-psg img {
+    width: 70%;
+}
+
+/* ===== BOTONES ESPECÍFICOS POR EQUIPO ===== */
+/* Barcelona */
+.button-barcelona-style {
+    background: linear-gradient(90deg, #cd122d, #154284);
+}
+
+.button-barcelona-style:hover {
+    background: linear-gradient(90deg, #cd122d, #154284);
+    background-size: 200% 100%;
+    animation: gradient-shift 1s linear infinite;
+}
+
+/* PSG */
+.button-psg-style {
+    background: #1a2434;
+}
+
+.button-psg-style:hover {
+    background: linear-gradient(90deg, #850115, #ffffff, #002f7b);
+    background-size: 200% 100%;
+    animation: gradient-shift 1s linear infinite;
+}
+
+/* Inter Miami */
+.button-inter-style {
+    background-color: #F5B6CD;
+}
+
+.button-inter-style:hover {
+    background: linear-gradient(90deg, #ffffff, #F5B6CD);
+    background-size: 200% 100%;
+    animation: gradient-shift 1s linear infinite;
+}
+
+/* Selección Argentina */
+.button-argentina-style {
+    background-color: #73c7e3;
+}
+
+.button-argentina-style:hover {
+    background: linear-gradient(90deg, #ffffff, #73c7e3);
+    background-size: 200% 100%;
+    animation: gradient-shift 1s linear infinite;
+}
+
+/* ===== ANIMACIÓN DE GRADIENTE ===== */
+@keyframes gradient-shift {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ===== BADGES (ESTADÍSTICAS) ===== */
+.badge {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Badges específicos por equipo */
+.badge-barcelona { background-color: #cd122d; }
+.badge-psg { background-color: #1a2434; }
+.badge-inter { background-color: #F5B6CD; }
+.badge-argentina { background-color: #73c7e3; }
+
+/* ===== ANIMACIONES ===== */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* ===== NAVEGACIÓN ===== */
+.navigation {
+    margin-bottom: 30px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
+    p {
+        font-size: 18px;
+    }
+    
+    .button-round {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+    
+    .button-seleccion { top: 5px; }
+    .button-barcelona { top: 60px; }
+    .button-psg { top: 115px; }
+    .button-inter { top: 170px; }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    p {
+        font-size: 16px;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* ===== EFECTOS ESPECIALES ===== */
+.highlight {
+    background: linear-gradient(120deg, #ffcc00 0%, #ffcc00 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
+}
+
+.highlight:hover {
+    background-size: 100% 88%;
+}
+
+/* ===== UTILIDADES ===== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }

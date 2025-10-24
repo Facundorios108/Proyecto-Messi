@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "messi-stats-api",
+		"name": "Messi Stats API",
+		"description": "Colección para probar la API de estadísticas de Messi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Health Check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"health"
+					]
+				},
+				"description": "Verifica que el servidor esté funcionando"
+			}
+		},
+		{
+			"name": "2. Estadísticas Completas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/api/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"stats"
+					]
+				},
+				"description": "Obtiene todas las estadísticas de Messi"
+			}
+		},
+		{
+			"name": "3. Solo Totales de Carrera",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/api/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"stats"
+					]
+				},
+				"description": "Obtiene solo los totales de carrera"
+			}
+		},
+		{
+			"name": "4. Stats Barcelona",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/api/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"stats"
+					]
+				},
+				"description": "Estadísticas en el Barcelona"
+			}
+		},
+		{
+			"name": "5. Stats PSG",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/api/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"stats"
+					]
+				},
+				"description": "Estadísticas en el PSG"
+			}
+		},
+		{
+			"name": "6. Stats Inter Miami",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/api/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"stats"
+					]
+				},
+				"description": "Estadísticas en Inter Miami"
+			}
+		},
+		{
+			"name": "7. Stats Argentina",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8888/api/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"stats"
+					]
+				},
+				"description": "Estadísticas con Argentina"
+			}
+		}
+	]
+}

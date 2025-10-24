@@ -1,188 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soccer Page</title>
-    <style>
-        /* Global Styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #eaeaea;
-            color: #333;
-        }
-
-        /* Main Content Styles */
-        .container {
-            max-width: 80%;
-            margin: 50px auto;
-            text-align: center;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        p {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Button Styles */
-        .button {
-            display: inline-block;
-            width: 60px; /* Restaurar el tamaño original del botón */
-            height: 60px; /* Restaurar el tamaño original del botón */
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 50%;
-            transition: background-color 0.3s, transform 0.3s;
-            margin-bottom: 20px; /* Aumentar el margen inferior para separar los botones */
-            text-align: center;
-            line-height: 60px; /* Ajustar la alineación del texto */
-            overflow: hidden; /* Asegurar que la imagen no se desborde */
-            display: flex; /* Usar flexbox para centrar la imagen */
-            align-items: center; /* Centrar verticalmente */
-            justify-content: center; /* Centrar horizontalmente */
-            z-index: 1; /* Asegurar que los botones queden por delante de la imagen */
-        }
-
-        .button img {
-            width: 100%; /* Ajustar el tamaño de la imagen */
-            height: auto; /* Mantener la proporción de la imagen */
-            border-radius: 50%;
-            display: block; /* Asegurar que la imagen sea un bloque */
-            margin: auto; /* Centrar la imagen dentro del botón */
-        }
-
-        .button-psg img {
-            width: 70%; /* Mantener el tamaño de la imagen de PSG */
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-
-        /* Fade-in Effect */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 2s forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Media Queries */
-        @media screen and (max-width: 480px) {
-            .container {
-                margin: 20px;
-                padding: 20px;
-            }
-        }
-
-        /* Button Positioning */
-        .button-seleccion,
-        .button-barcelona,
-        .button-psg,
-        .button-inter {
-            position: absolute;
-            right: 10px;
-            z-index: 1; /* Asegurar que los botones queden por delante de la imagen */
-        }
-
-        .button-seleccion {
-            top: 10px;
-        }
-
-        .button-barcelona {
-            top: 75px; /* Ajustar la posición para separar los botones */
-        }
-
-        .button-psg {
-            top: 140px; /* Ajustar la posición para separar los botones */
-        }
-
-        .button-inter {
-            top: 205px; /* Ajustar la posición para separar los botones */
-        }
-
-        .button-exit {
-            display: block;
-            margin: 20px auto; /* Centrar el botón de exit */
-            width: auto;
-            height: auto;
-            padding: 12px 25px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: background-color 0.3s, transform 0.3s;
-            text-align: center;
-        }
-
-        .button-exit:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-
-        /* Badge Styles */
-        .badge {
-            display: inline-block;
-            padding: 5px 10px;
-            background-color: #ffcc00;
-            color: white;
-            border-radius: 5px;
-            margin-left: 5px;
-        }
-
-        /* Align Specific Paragraphs */
-        .left-aligned {
-            text-align: left;
-        }
-
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Lionel Messi - El Mejor Jugador de la Historia</title>
+    <meta name="description" content="Explora la carrera de Lionel Messi a través de sus equipos: Barcelona, PSG, Inter Miami y la Selección Argentina.">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container">
         <div class="button-container">
-            <a href="messi_page4.html" class="button button-seleccion">
-                <img src="EscudoAFA.png" alt="Selección">
+            <a href="pages/messi_page4.html" class="button-round button-seleccion" title="Selección Argentina">
+                <img src="images/EscudoAFA.png" alt="Escudo Selección Argentina">
             </a>
-            <a href="messi_page.html" class="button button-barcelona">
-                <img src="EscudoBar.png" alt="Barcelona">
+            <a href="pages/messi_page.html" class="button-round button-barcelona" title="FC Barcelona">
+                <img src="images/EscudoBar.png" alt="Escudo FC Barcelona">
             </a>
-            <a href="messi_page2.html" class="button button-psg">
-                <img src="EscudoPSG.png" alt="PSG" style="width: 70%; height: auto;">
+            <a href="pages/messi_page2.html" class="button-round button-psg" title="Paris Saint-Germain">
+                <img src="images/EscudoPSG.png" alt="Escudo PSG">
             </a>
-            <a href="messi_page3.html" class="button button-inter">
-                <img src="EscudoInt.png" alt="Inter">
+            <a href="pages/messi_page3.html" class="button-round button-inter" title="Inter Miami">
+                <img src="images/EscudoInt.png" alt="Escudo Inter Miami">
             </a>
         </div>
-        <img src="000_334P84K-1024x683.jpg" alt="Messi playing for Barcelona in 2015" class="fade-in">
-        <p>The greatest player in history</p>
-        <p class="left-aligned">Partidos: <span class="badge">1086</span></p>
-        <p class="left-aligned">Goles: <span class="badge">852</span></p>
-        <p class="left-aligned">Asistencias: <span class="badge">382</span></p>
-        <p class="left-aligned">Títulos: <span class="badge">46</span></p>
-        <a href="https://www.google.com" class="button-exit">Exit</a>
+        
+        <h1>Lionel Messi</h1>
+        <img src="images/000_334P84K-1024x683.jpg" alt="Lionel Messi jugando para el Barcelona en 2015" class="fade-in">
+        <p class="highlight">El mejor jugador de la historia</p>
+        
+        <div class="stats-section">
+            <p class="left-aligned">Partidos: <span class="badge">1090</span></p>
+            <p class="left-aligned">Goles: <span class="badge">858</span></p>
+            <p class="left-aligned">Asistencias: <span class="badge">385</span></p>
+            <p class="left-aligned">Títulos: <span class="badge">47</span></p>
+        </div>
+        
+        <div class="navigation mt-20">
+            <a href="#" class="button" onclick="history.back()">← Volver</a>
+        </div>
     </div>
+    
+    <!-- Sin JavaScript por ahora - números directos en HTML -->
 </body>
 </html>
 
