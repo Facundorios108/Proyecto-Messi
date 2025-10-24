@@ -4,13 +4,18 @@ Backend para el Panel de Administración
 Permite actualizar las estadísticas desde la interfaz web
 """
 
-from http.server import HTTPServer, BaseHTTPRequestHandler
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 import json
 import os
 from datetime import datetime
 from urllib.parse import urlparse, parse_qs
 
-class AdminPanelHandler(BaseHTTPRequestHandler):
+class AdminPanelHandler(SimpleHTTPRequestHandler):
+    
+    # Disable logging for better performance
+    def log_message(self, format, *args):
+        pass
+    
     def do_GET(self):
         """Maneja peticiones GET"""
         # Remover query string del path
@@ -22,6 +27,10 @@ class AdminPanelHandler(BaseHTTPRequestHandler):
             self.serve_admin_panel()
         elif path.startswith('/js/'):
             self.serve_file(path[1:], 'application/json')
+        elif path.startswith('/images/'):
+            # Usar el método del padre para servir imágenes (más rápido)
+            self.path = path[1:]  # Remover la / inicial
+            return SimpleHTTPRequestHandler.do_GET(self)
         elif path.endswith('.html'):
             self.serve_file(path[1:], 'text/html')
         elif path.endswith('.css'):
