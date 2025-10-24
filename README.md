@@ -185,4 +185,15 @@ Este proyecto es de uso educativo y de demostración. Todas las imágenes son ut
 
 ### 🌟 "El fútbol me ha dado todo en la vida, y espero poder devolver aunque sea una pequeña parte de todo lo que me ha dado." - Lionel Messi
 
+
+# 1. Ir a la carpeta
+cd "/Users/facundorios/Documents/Facundo/Programacion/Proyectos/Proyecto Messi"
+
+# 2. Iniciar servidores
+python3 proxy_server.py & python3 admin_server.py &
+
+# 3. Abrir en el navegador
+open http://localhost:9000/professional_stats.html
+
+
 *Última actualización: Octubre 2025*

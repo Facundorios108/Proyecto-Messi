@@ -23,10 +23,10 @@
         }
 
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/000_334P84K-1024x683.jpg');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/MessiSeleccion.jpg');
             background-size: cover;
             background-position: center;
-            height: 60vh;
+            height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -130,6 +130,8 @@
         .stat-card.goals::before { background: #38a169; }
         .stat-card.assists::before { background: #d69e2e; }
         .stat-card.titles::before { background: #9f7aea; }
+        .stat-card.ballon::before { background: #f6ad55; }
+        .stat-card.golden-boot::before { background: #e53e3e; }
 
         .stat-icon {
             font-size: 2.5rem;
@@ -141,6 +143,8 @@
         .stat-card.goals .stat-icon { color: #38a169; }
         .stat-card.assists .stat-icon { color: #d69e2e; }
         .stat-card.titles .stat-icon { color: #9f7aea; }
+        .stat-card.ballon .stat-icon { color: #f6ad55; }
+        .stat-card.golden-boot .stat-icon { color: #e53e3e; }
 
         .stat-number {
             font-size: 3rem;
@@ -176,67 +180,190 @@
 
         .teams-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
         .team-card {
             background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border-left: 5px solid var(--team-color);
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--team-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .team-card:hover::before {
+            transform: scaleX(1);
         }
 
         .team-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
 
-        .team-header {
+        .team-card-header {
+            background: linear-gradient(135deg, var(--team-color) 0%, var(--team-color-dark) 100%);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 140px;
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+        }
+
+        .team-card-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .team-logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-info {
+            flex: 1;
         }
 
         .team-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 0.25rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            line-height: 1.2;
         }
 
         .team-period {
-            font-size: 0.9rem;
-            color: #718096;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
             font-weight: 500;
+        }
+
+        .team-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+        }
+
+        .team-card:hover .team-logo {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
         }
 
         .team-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.25rem;
+            padding: 2rem;
+            flex: 1;
         }
 
         .team-stat {
             text-align: center;
-            padding: 0.75rem;
+            padding: 1rem;
             background: #f7fafc;
-            border-radius: 8px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 90px;
+        }
+
+        .team-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--team-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover .team-stat::before {
+            transform: scaleX(1);
+        }
+
+        .team-stat:hover {
+            background: #edf2f7;
+            transform: translateY(-2px);
         }
 
         .team-stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.75rem;
+            font-weight: 800;
             color: #2d3748;
+            margin-bottom: 0.25rem;
         }
 
         .team-stat-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #718096;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .team-card-footer {
+            padding: 1.5rem 2rem;
+            background: #f7fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--team-color);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-card-footer {
+            background: var(--team-color);
+            color: white;
+        }
+
+        .team-card-footer i {
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover .team-card-footer i {
+            transform: translateX(5px);
         }
 
         .last-updated {
@@ -383,6 +510,22 @@
                     <div class="stat-number" id="titles">46</div>
                     <div class="stat-label">Títulos</div>
                 </div>
+
+                <div class="stat-card ballon">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-number" id="ballon">8</div>
+                    <div class="stat-label">Balones de Oro</div>
+                </div>
+
+                <div class="stat-card golden-boot">
+                    <div class="stat-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <div class="stat-number" id="golden-boot">6</div>
+                    <div class="stat-label">Botas de Oro</div>
+                </div>
             </div>
 
             <!-- Teams Section -->
@@ -393,11 +536,15 @@
                 </div>
 
                 <div class="teams-grid">
-                    <div class="team-card" style="--team-color: #cd122d;">
-                        <div class="team-header">
-                            <div>
-                                <div class="team-name">FC Barcelona</div>
-                                <div class="team-period">2004-2021</div>
+                    <!-- FC Barcelona -->
+                    <a href="pages/messi_page.html" class="team-card" style="--team-color: #a50044; --team-color-dark: #7a0033;">
+                        <div class="team-card-header">
+                            <div class="team-logo-container">
+                                <div class="team-info">
+                                    <div class="team-name">FC Barcelona</div>
+                                    <div class="team-period">2004-2021</div>
+                                </div>
+                                <img src="images/EscudoBar.png" alt="FC Barcelona" class="team-logo">
                             </div>
                         </div>
                         <div class="team-stats">
@@ -418,13 +565,21 @@
                                 <div class="team-stat-label">Títulos</div>
                             </div>
                         </div>
-                    </div>
+                        <div class="team-card-footer">
+                            <span>Ver detalles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
 
-                    <div class="team-card" style="--team-color: #1a2434;">
-                        <div class="team-header">
-                            <div>
-                                <div class="team-name">Paris Saint-Germain</div>
-                                <div class="team-period">2021-2023</div>
+                    <!-- Paris Saint-Germain -->
+                    <a href="pages/messi_page2.html" class="team-card" style="--team-color: #004170; --team-color-dark: #002d4f;">
+                        <div class="team-card-header">
+                            <div class="team-logo-container">
+                                <div class="team-info">
+                                    <div class="team-name">Paris Saint-Germain</div>
+                                    <div class="team-period">2021-2023</div>
+                                </div>
+                                <img src="images/EscudoPSG.png" alt="PSG" class="team-logo">
                             </div>
                         </div>
                         <div class="team-stats">
@@ -445,13 +600,21 @@
                                 <div class="team-stat-label">Títulos</div>
                             </div>
                         </div>
-                    </div>
+                        <div class="team-card-footer">
+                            <span>Ver detalles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
 
-                    <div class="team-card" style="--team-color: #F5B6CD;">
-                        <div class="team-header">
-                            <div>
-                                <div class="team-name">Inter Miami CF</div>
-                                <div class="team-period">2023-presente</div>
+                    <!-- Inter Miami -->
+                    <a href="pages/messi_page3.html" class="team-card" style="--team-color: #F7B5CD; --team-color-dark: #e098b7;">
+                        <div class="team-card-header">
+                            <div class="team-logo-container">
+                                <div class="team-info">
+                                    <div class="team-name">Inter Miami CF</div>
+                                    <div class="team-period">2023-presente</div>
+                                </div>
+                                <img src="images/EscudoInt.png" alt="Inter Miami" class="team-logo">
                             </div>
                         </div>
                         <div class="team-stats">
@@ -472,13 +635,21 @@
                                 <div class="team-stat-label">Títulos</div>
                             </div>
                         </div>
-                    </div>
+                        <div class="team-card-footer">
+                            <span>Ver detalles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
 
-                    <div class="team-card" style="--team-color: #73c7e3;">
-                        <div class="team-header">
-                            <div>
-                                <div class="team-name">Selección Argentina</div>
-                                <div class="team-period">2005-presente</div>
+                    <!-- Selección Argentina -->
+                    <a href="pages/messi_page4.html" class="team-card" style="--team-color: #75aadb; --team-color-dark: #5a8fc4;">
+                        <div class="team-card-header">
+                            <div class="team-logo-container">
+                                <div class="team-info">
+                                    <div class="team-name">Selección Argentina</div>
+                                    <div class="team-period">2005-presente</div>
+                                </div>
+                                <img src="images/EscudoAFA.png" alt="Argentina" class="team-logo">
                             </div>
                         </div>
                         <div class="team-stats">
@@ -499,7 +670,11 @@
                                 <div class="team-stat-label">Títulos</div>
                             </div>
                         </div>
-                    </div>
+                        <div class="team-card-footer">
+                            <span>Ver detalles</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
 
