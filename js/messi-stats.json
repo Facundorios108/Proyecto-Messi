@@ -1,10 +1,10 @@
 {
-  "last_updated": "2025-10-24",
+  "last_updated": "2025-10-24 12:22:34",
   "career_totals": {
-    "matches": 1090,
-    "goals": 858,
-    "assists": 385,
-    "titles": 47
+    "matches": 1130,
+    "goals": 889,
+    "assists": 401,
+    "titles": 46
   },
   "teams": {
     "barcelona": {
@@ -28,22 +28,22 @@
     "inter_miami": {
       "name": "Inter Miami CF",
       "period": "2023-presente",
-      "matches": 47,
-      "goals": 41,
-      "assists": 23,
+      "matches": 82,
+      "goals": 71,
+      "assists": 37,
       "titles": 2,
       "color": "#F5B6CD"
     },
     "argentina": {
       "name": "Selección Argentina",
       "period": "2005-presente",
-      "matches": 190,
-      "goals": 113,
-      "assists": 59,
+      "matches": 195,
+      "goals": 114,
+      "assists": 61,
       "titles": 6,
       "color": "#73c7e3"
     }
   },
-  "source": "estimated",
+  "source": "admin panel",
   "estimation_note": "Estimación basada en 0 partidos nuevos desde 2025-10-24"
 }
