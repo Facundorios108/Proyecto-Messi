@@ -334,7 +334,7 @@
             </div>
 
             <div class="btn-group">
-                <button class="btn btn-save" onclick="saveData('totales')">
+                <button type="button" class="btn btn-save" onclick="saveData('totales', event)">
                     💾 Guardar Totales
                 </button>
                 <button class="btn btn-view" onclick="openPage()">
@@ -375,10 +375,10 @@
             </div>
 
             <div class="btn-group">
-                <button class="btn btn-save" onclick="saveData('barcelona')">
+                <button type="button" class="btn btn-save" onclick="saveData('barcelona', event)">
                     💾 Guardar Barcelona
                 </button>
-                <button class="btn btn-cancel" onclick="loadData()">
+                <button type="button" class="btn btn-cancel" onclick="loadData()">
                     🔄 Recargar
                 </button>
             </div>
@@ -413,10 +413,10 @@
             </div>
 
             <div class="btn-group">
-                <button class="btn btn-save" onclick="saveData('psg')">
+                <button type="button" class="btn btn-save" onclick="saveData('psg', event)">
                     💾 Guardar PSG
                 </button>
-                <button class="btn btn-cancel" onclick="loadData()">
+                <button type="button" class="btn btn-cancel" onclick="loadData()">
                     🔄 Recargar
                 </button>
             </div>
@@ -451,10 +451,10 @@
             </div>
 
             <div class="btn-group">
-                <button class="btn btn-save" onclick="saveData('inter')">
+                <button type="button" class="btn btn-save" onclick="saveData('inter', event)">
                     💾 Guardar Inter Miami
                 </button>
-                <button class="btn btn-cancel" onclick="loadData()">
+                <button type="button" class="btn btn-cancel" onclick="loadData()">
                     🔄 Recargar
                 </button>
             </div>
@@ -489,10 +489,10 @@
             </div>
 
             <div class="btn-group">
-                <button class="btn btn-save" onclick="saveData('argentina')">
+                <button type="button" class="btn btn-save" onclick="saveData('argentina', event)">
                     💾 Guardar Argentina
                 </button>
-                <button class="btn btn-cancel" onclick="loadData()">
+                <button type="button" class="btn btn-cancel" onclick="loadData()">
                     🔄 Recargar
                 </button>
             </div>
@@ -563,7 +563,15 @@
         }
 
         // Guardar datos
-        async function saveData(section) {
+        async function saveData(section, event) {
+            // Prevenir cualquier comportamiento por defecto
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            console.log('🔍 DEBUG: saveData ejecutándose para sección:', section);
+            console.log('🔍 DEBUG: NO debe abrir ventanas automáticamente');
             let updateData = {};
             
             if (section === 'totales') {
@@ -609,18 +617,7 @@
                         loadData();
                     }, 1000);
                     
-                    // Intentar actualizar la página principal si está abierta
-                    setTimeout(() => {
-                        try {
-                            // Buscar ventana abierta de la página principal
-                            const pageWindow = window.open('', 'messiStats');
-                            if (pageWindow && pageWindow.location.href.includes('professional_stats.html')) {
-                                pageWindow.location.reload(true);
-                            }
-                        } catch (e) {
-                            console.log('Página principal no está abierta');
-                        }
-                    }, 1500);
+                    // NO abrir ventanas automáticamente - solo guardar datos
                 } else {
                     showStatus(section, 'error', '❌ Error al guardar. Verifica que el servidor esté corriendo.');
                 }
@@ -633,20 +630,23 @@
 
         // Abrir página principal
         function openPage() {
-            window.open('../professional_stats.html', 'messiStats');
+            window.messiStatsWindow = window.open('../professional_stats.html', 'messiStats');
         }
 
         // Forzar recarga de la página principal
         function forcePageReload() {
             // Intentar comunicarse con la página principal si está abierta
             try {
-                const pageWindow = window.open('../professional_stats.html', 'messiStats');
-                if (pageWindow) {
-                    pageWindow.location.reload(true);
+                if (window.messiStatsWindow && !window.messiStatsWindow.closed) {
+                    window.messiStatsWindow.location.reload(true);
                     showStatus('totales', 'success', '✅ Página actualizada');
+                } else {
+                    // Si no hay ventana abierta, abrir una nueva
+                    window.messiStatsWindow = window.open('../professional_stats.html', 'messiStats');
+                    showStatus('totales', 'success', '✅ Página abierta');
                 }
             } catch (e) {
-                showStatus('totales', 'info', 'ℹ️ Abre la página principal para ver los cambios');
+                showStatus('totales', 'info', 'ℹ️ No se pudo acceder a la página principal');
             }
         }
 
