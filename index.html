@@ -725,7 +725,7 @@
         // Cargar datos desde la API si está disponible
         async function loadLiveStats() {
             try {
-                const response = await fetch('http://localhost:8888/api/stats');
+                const response = await fetch('http://localhost:9000/api/stats?' + new Date().getTime());
                 if (response.ok) {
                     const data = await response.json();
                     
@@ -735,7 +735,42 @@
                     document.getElementById('assists').textContent = data.career_totals.assists;
                     document.getElementById('titles').textContent = data.career_totals.titles;
                     
-                    console.log('✅ Estadísticas actualizadas desde la API');
+                    // Actualizar estadísticas de equipos si existen
+                    const teamCards = document.querySelectorAll('.team-card');
+                    
+                    if (teamCards[0] && data.teams.barcelona) {
+                        const barStats = teamCards[0].querySelectorAll('.team-stat-number');
+                        barStats[0].textContent = data.teams.barcelona.matches;
+                        barStats[1].textContent = data.teams.barcelona.goals;
+                        barStats[2].textContent = data.teams.barcelona.assists;
+                        barStats[3].textContent = data.teams.barcelona.titles;
+                    }
+                    
+                    if (teamCards[1] && data.teams.psg) {
+                        const psgStats = teamCards[1].querySelectorAll('.team-stat-number');
+                        psgStats[0].textContent = data.teams.psg.matches;
+                        psgStats[1].textContent = data.teams.psg.goals;
+                        psgStats[2].textContent = data.teams.psg.assists;
+                        psgStats[3].textContent = data.teams.psg.titles;
+                    }
+                    
+                    if (teamCards[2] && data.teams.inter_miami) {
+                        const interStats = teamCards[2].querySelectorAll('.team-stat-number');
+                        interStats[0].textContent = data.teams.inter_miami.matches;
+                        interStats[1].textContent = data.teams.inter_miami.goals;
+                        interStats[2].textContent = data.teams.inter_miami.assists;
+                        interStats[3].textContent = data.teams.inter_miami.titles;
+                    }
+                    
+                    if (teamCards[3] && data.teams.argentina) {
+                        const argStats = teamCards[3].querySelectorAll('.team-stat-number');
+                        argStats[0].textContent = data.teams.argentina.matches;
+                        argStats[1].textContent = data.teams.argentina.goals;
+                        argStats[2].textContent = data.teams.argentina.assists;
+                        argStats[3].textContent = data.teams.argentina.titles;
+                    }
+                    
+                    console.log('✅ TODAS las estadísticas actualizadas desde la API');
                 }
             } catch (error) {
                 console.log('📊 Usando datos estáticos (API no disponible)');

@@ -33,13 +33,14 @@ echo ""
 if lsof -Pi :8888 -sTCP:LISTEN -t >/dev/null 2>&1 && lsof -Pi :9000 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
     echo "✅ Servidores iniciados correctamente"
     echo ""
-    echo "⚙️  Panel de Admin: http://localhost:9000/admin"
+    echo "📝 EDITOR COMPLETO: http://localhost:9000/admin/editor.html"
+    echo "⚙️  Panel Simple: http://localhost:9000/admin"
     echo "📊 Página Principal: http://localhost:9000/professional_stats.html"
     echo "📈 API Stats: http://localhost:8888/api/stats"
     echo ""
-    echo "🌐 Abriendo panel de administración..."
+    echo "🌐 Abriendo editor completo..."
     sleep 1
-    open http://localhost:9000/admin
+    open http://localhost:9000/admin/editor.html
 else
     echo "❌ Error: Los servidores no se iniciaron correctamente"
     exit 1

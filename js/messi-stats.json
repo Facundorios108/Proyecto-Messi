@@ -1,10 +1,10 @@
 {
-  "last_updated": "2025-10-24 18:18:24",
+  "last_updated": "2025-10-24 23:50:59",
   "career_totals": {
-    "matches": 1130,
-    "goals": 889,
+    "matches": 1131,
+    "goals": 891,
     "assists": 401,
-    "titles": 47
+    "titles": 46
   },
   "teams": {
     "barcelona": {
@@ -28,8 +28,8 @@
     "inter_miami": {
       "name": "Inter Miami CF",
       "period": "2023-presente",
-      "matches": 82,
-      "goals": 71,
+      "matches": 83,
+      "goals": 73,
       "assists": 37,
       "titles": 2,
       "color": "#F5B6CD"
@@ -44,6 +44,6 @@
       "color": "#73c7e3"
     }
   },
-  "source": "admin panel",
+  "source": "admin panel - full editor",
   "estimation_note": "Estimación basada en 0 partidos nuevos desde 2025-10-24"
 }

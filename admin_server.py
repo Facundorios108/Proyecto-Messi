@@ -72,6 +72,8 @@ class AdminPanelHandler(SimpleHTTPRequestHandler):
         """Maneja peticiones POST para actualizar estadísticas"""
         if self.path == '/api/update':
             self.update_stats()
+        elif self.path == '/api/update-full':
+            self.update_full_stats()
         else:
             self.send_error(404)
     
@@ -133,6 +135,57 @@ class AdminPanelHandler(SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(response).encode())
             
             print(f"\n✅ Estadísticas actualizadas: {data['career_totals']}")
+            
+        except Exception as e:
+            self.send_error(500, str(e))
+            print(f"❌ Error: {e}")
+    
+    def update_full_stats(self):
+        """Actualiza estadísticas completas (totales + equipos)"""
+        try:
+            # Leer datos del cuerpo de la petición
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+            update_data = json.loads(post_data.decode('utf-8'))
+            
+            # Leer archivo actual
+            with open('js/messi-stats.json', 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            # Actualizar según lo que venga en la petición
+            if 'career_totals' in update_data:
+                data['career_totals']['matches'] = int(update_data['career_totals']['matches'])
+                data['career_totals']['goals'] = int(update_data['career_totals']['goals'])
+                data['career_totals']['assists'] = int(update_data['career_totals']['assists'])
+                data['career_totals']['titles'] = int(update_data['career_totals']['titles'])
+            
+            if 'teams' in update_data:
+                for team_key, team_stats in update_data['teams'].items():
+                    if team_key in data['teams']:
+                        data['teams'][team_key]['matches'] = int(team_stats['matches'])
+                        data['teams'][team_key]['goals'] = int(team_stats['goals'])
+                        data['teams'][team_key]['assists'] = int(team_stats['assists'])
+                        data['teams'][team_key]['titles'] = int(team_stats['titles'])
+            
+            data['last_updated'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            data['source'] = 'admin panel - full editor'
+            
+            # Guardar archivo actualizado
+            with open('js/messi-stats.json', 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            
+            # Actualizar archivos HTML
+            self.update_html_files(data['career_totals'])
+            
+            # Enviar respuesta exitosa
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            response = {'success': True, 'message': 'Datos actualizados correctamente'}
+            self.wfile.write(json.dumps(response).encode())
+            
+            print(f"\n✅ Datos actualizados exitosamente")
             
         except Exception as e:
             self.send_error(500, str(e))

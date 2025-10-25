@@ -380,32 +380,7 @@
             margin-right: 0.5rem;
         }
 
-        .navigation {
-            text-align: center;
-            margin: 3rem 0;
-        }
 
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-back:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-        }
-
-        .btn-back i {
-            margin-right: 0.5rem;
-        }
 
         @keyframes fadeInUp {
             from {
@@ -483,7 +458,7 @@
                     <div class="stat-icon">
                         <i class="fas fa-futbol"></i>
                     </div>
-                    <div class="stat-number" id="matches">1130</div>
+                    <div class="stat-number" id="matches">1131</div>
                     <div class="stat-label">Partidos</div>
                 </div>
 
@@ -491,7 +466,7 @@
                     <div class="stat-icon">
                         <i class="fas fa-bullseye"></i>
                     </div>
-                    <div class="stat-number" id="goals">889</div>
+                    <div class="stat-number" id="goals">891</div>
                     <div class="stat-label">Goles</div>
                 </div>
 
@@ -507,7 +482,7 @@
                     <div class="stat-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
-                    <div class="stat-number" id="titles">46</div>
+                    <div class="stat-number" id="titles">47</div>
                     <div class="stat-label">Títulos</div>
                 </div>
 
@@ -683,13 +658,6 @@
                 <strong>Última actualización:</strong> 24 de octubre de 2025
             </div>
         </div>
-
-        <div class="navigation">
-            <a href="index.html" class="btn-back">
-                <i class="fas fa-arrow-left"></i>
-                Volver al inicio
-            </a>
-        </div>
     </div>
 
     <script>
@@ -725,17 +693,56 @@
         // Cargar datos desde la API si está disponible
         async function loadLiveStats() {
             try {
-                const response = await fetch('http://localhost:8888/api/stats');
+                const response = await fetch('http://localhost:9000/api/stats?' + new Date().getTime());
                 if (response.ok) {
                     const data = await response.json();
                     
-                    // Actualizar estadísticas principales
+                    // Actualizar estadísticas principales (totales)
                     document.getElementById('matches').textContent = data.career_totals.matches;
                     document.getElementById('goals').textContent = data.career_totals.goals;
                     document.getElementById('assists').textContent = data.career_totals.assists;
                     document.getElementById('titles').textContent = data.career_totals.titles;
                     
-                    console.log('✅ Estadísticas actualizadas desde la API');
+                    // Actualizar estadísticas de equipos
+                    const teamCards = document.querySelectorAll('.team-card');
+                    
+                    // Barcelona (primera card)
+                    if (teamCards[0] && data.teams.barcelona) {
+                        const barStats = teamCards[0].querySelectorAll('.team-stat-number');
+                        barStats[0].textContent = data.teams.barcelona.matches;
+                        barStats[1].textContent = data.teams.barcelona.goals;
+                        barStats[2].textContent = data.teams.barcelona.assists;
+                        barStats[3].textContent = data.teams.barcelona.titles;
+                    }
+                    
+                    // PSG (segunda card)
+                    if (teamCards[1] && data.teams.psg) {
+                        const psgStats = teamCards[1].querySelectorAll('.team-stat-number');
+                        psgStats[0].textContent = data.teams.psg.matches;
+                        psgStats[1].textContent = data.teams.psg.goals;
+                        psgStats[2].textContent = data.teams.psg.assists;
+                        psgStats[3].textContent = data.teams.psg.titles;
+                    }
+                    
+                    // Inter Miami (tercera card)
+                    if (teamCards[2] && data.teams.inter_miami) {
+                        const interStats = teamCards[2].querySelectorAll('.team-stat-number');
+                        interStats[0].textContent = data.teams.inter_miami.matches;
+                        interStats[1].textContent = data.teams.inter_miami.goals;
+                        interStats[2].textContent = data.teams.inter_miami.assists;
+                        interStats[3].textContent = data.teams.inter_miami.titles;
+                    }
+                    
+                    // Argentina (cuarta card)
+                    if (teamCards[3] && data.teams.argentina) {
+                        const argStats = teamCards[3].querySelectorAll('.team-stat-number');
+                        argStats[0].textContent = data.teams.argentina.matches;
+                        argStats[1].textContent = data.teams.argentina.goals;
+                        argStats[2].textContent = data.teams.argentina.assists;
+                        argStats[3].textContent = data.teams.argentina.titles;
+                    }
+                    
+                    console.log('✅ TODAS las estadísticas actualizadas desde la API');
                 }
             } catch (error) {
                 console.log('📊 Usando datos estáticos (API no disponible)');
