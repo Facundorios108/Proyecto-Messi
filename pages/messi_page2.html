@@ -262,6 +262,193 @@
             color: #004170;
         }
 
+        /* Estilos para Goles por Año - PSG (Copiado de Inter Miami) */
+        .goals-by-year-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            margin: 2rem 0;
+        }
+
+        .goals-by-year-section .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #004170;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .chart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .chart-wrapper {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-evenly;
+            gap: 2rem;
+            background: white;
+            padding: 3rem 2rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,65,112,0.2);
+            position: relative;
+            min-height: 350px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .chart-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #004170, #0066cc, #3399ff);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .year-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .year-bar:hover {
+            transform: scale(1.05);
+        }
+
+        .bar-container {
+            height: 250px;
+            width: 80px;
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 1rem;
+            position: relative;
+            border-bottom: 2px solid transparent;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(180deg, #004170 0%, #0066cc 50%, #3399ff 100%);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 4px 15px rgba(0,65,112,0.4);
+            animation: growBar 1.5s ease-out forwards;
+        }
+
+        @keyframes growBar {
+            from {
+                height: 0;
+            }
+            to {
+                height: var(--final-height);
+            }
+        }
+
+        .bar[data-goals="6"] {
+            --final-height: 35%;
+        }
+
+        .bar[data-goals="17"] {
+            --final-height: 100%;
+        }
+
+        .bar[data-goals="9"] {
+            --final-height: 52.9%;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #004170;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #004170;
+        }
+
+        .year-label {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .year-note {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .chart-info {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,65,112,0.2);
+        }
+
+        .total-goals {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #004170, #0066cc);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .total-number {
+            display: block;
+            font-size: 4rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .total-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chart-notes {
+            margin-top: 1rem;
+        }
+
+        .chart-notes p {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-left: 4px solid #004170;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-weight: 500;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -292,6 +479,33 @@
             
             .stat-number {
                 font-size: 2.5rem;
+            }
+            
+            .chart-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .chart-wrapper {
+                min-height: 250px;
+                padding: 2rem 1rem;
+            }
+            
+            .bar-container {
+                height: 180px;
+                width: 60px;
+            }
+            
+            .total-number {
+                font-size: 3rem;
+            }
+            
+            .goals-by-year-section .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
             }
         }
     </style>
@@ -394,6 +608,49 @@
                     <div class="trophy-icon">🥇</div>
                     <div class="trophy-name">Balón de Oro</div>
                     <div class="trophy-count">1x</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nueva sección: Goles por Año Calendario en PSG -->
+        <div class="goals-by-year-section">
+            <h3 class="section-title">🇫🇷 Evolución de Goles por Año Calendario en PSG</h3>
+            <p class="section-subtitle">Recorrido completo de Messi en París (2021-2023)</p>
+            <div class="chart-container">
+                <div class="chart-wrapper">
+                    <div class="year-bar" data-year="2021">
+                        <div class="bar-container">
+                            <div class="bar" data-goals="6" style="height: 35%;">
+                                <span class="bar-value">6</span>
+                            </div>
+                        </div>
+                        <div class="year-label">2021</div>
+                    </div>
+                    
+                    <div class="year-bar" data-year="2022">
+                        <div class="bar-container">
+                            <div class="bar" data-goals="17" style="height: 100%;">
+                                <span class="bar-value">17</span>
+                            </div>
+                        </div>
+                        <div class="year-label">2022</div>
+                    </div>
+                    
+                    <div class="year-bar" data-year="2023">
+                        <div class="bar-container">
+                            <div class="bar" data-goals="9" style="height: 52.9%;">
+                                <span class="bar-value">9</span>
+                            </div>
+                        </div>
+                        <div class="year-label">2023</div>
+                    </div>
+                </div>
+                
+                <div class="chart-info">
+                    <div class="total-goals">
+                        <span class="total-number">32</span>
+                        <span class="total-label">Goles Totales en PSG</span>
+                    </div>
                 </div>
             </div>
         </div>

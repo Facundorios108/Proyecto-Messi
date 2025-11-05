@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-11-05 15:30:00",
+  "last_updated": "2025-11-05 16:47:19",
   "data_source": "Wikipedia oficial - verificado el 2025-11-05",
   "career_totals": {
     "matches": 1132,
@@ -53,9 +53,9 @@
     "inter_miami": {
       "name": "Inter Miami CF",
       "period": "2023-presente",
-      "matches": 37,
-      "goals": 34,
-      "assists": 18,
+      "matches": 84,
+      "goals": 74,
+      "assists": 37,
       "titles": 2,
       "color": "#F7B5CD",
       "major_titles": {
@@ -96,5 +96,6 @@
     "url": "https://es.wikipedia.org/wiki/Lionel_Messi",
     "verified_date": "2025-11-05",
     "note": "Datos verificados con fuentes oficiales de Wikipedia"
-  }
+  },
+  "source": "admin panel - full editor"
 }

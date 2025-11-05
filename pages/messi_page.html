@@ -262,6 +262,302 @@
             color: #a50044;
         }
 
+        /* Estilos para Goles por Año - Barcelona */
+        .barcelona-goals-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #fff5f8 0%, #ffeef3 100%);
+            margin: 2rem 0;
+        }
+
+        .barcelona-section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #a50044;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .barcelona-section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .barcelona-timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .barcelona-stats-highlight {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .highlight-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(165,0,68,0.1);
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(165,0,68,0.2);
+        }
+
+        .peak-year {
+            border: 3px solid #ffd700;
+            background: linear-gradient(135deg, #ffd700, #ffed4a);
+        }
+
+        .total-goals {
+            border: 3px solid #a50044;
+        }
+
+        .avg-goals {
+            border: 3px solid #004170;
+        }
+
+        .highlight-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #a50044;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .peak-year .highlight-number {
+            color: #b8860b;
+        }
+
+        .highlight-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .highlight-year {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .barcelona-chart-wrapper {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.8rem;
+            background: white;
+            padding: 3rem 2rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(165,0,68,0.2);
+            position: relative;
+            margin-bottom: 3rem;
+            overflow-x: auto;
+            min-height: 400px;
+        }
+
+        .barcelona-chart-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #a50044, #d63384, #f7b5cd);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .year-bar-barca {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 50px;
+        }
+
+        .year-bar-barca:hover {
+            transform: scale(1.05);
+        }
+
+        .year-bar-barca.peak-year {
+            filter: drop-shadow(0 0 10px #ffd700);
+        }
+
+        .bar-container-barca {
+            height: 300px;
+            width: 100%;
+            max-width: 45px;
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .bar-barca {
+            width: 100%;
+            background: linear-gradient(180deg, #a50044 0%, #d63384 50%, #f7b5cd 100%);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 4px 15px rgba(165,0,68,0.4);
+            animation: barcaGrowBar 1.5s ease-out forwards;
+        }
+
+        .peak-bar {
+            background: linear-gradient(180deg, #ffd700 0%, #ffed4a 50%, #fff59d 100%) !important;
+            box-shadow: 0 6px 20px rgba(255,215,0,0.5) !important;
+        }
+
+        @keyframes barcaGrowBar {
+            from {
+                height: 0;
+            }
+            to {
+                height: var(--final-height);
+            }
+        }
+
+        .bar-barca[data-goals="0"] {
+            --final-height: 0%;
+            min-height: 0;
+        }
+
+        .bar-barca[data-goals="3"] {
+            --final-height: 4%;
+        }
+
+        .bar-barca[data-goals="10"] {
+            --final-height: 13%;
+        }
+
+        .bar-barca[data-goals="25"] {
+            --final-height: 32%;
+        }
+
+        .bar-barca[data-goals="20"] {
+            --final-height: 25%;
+        }
+
+        .bar-barca[data-goals="38"] {
+            --final-height: 48%;
+        }
+
+        .bar-barca[data-goals="58"] {
+            --final-height: 73%;
+        }
+
+        .bar-barca[data-goals="55"] {
+            --final-height: 70%;
+        }
+
+        .bar-barca[data-goals="79"] {
+            --final-height: 100%;
+        }
+
+        .bar-barca[data-goals="39"] {
+            --final-height: 49%;
+        }
+
+        .bar-barca[data-goals="50"] {
+            --final-height: 63%;
+        }
+
+        .bar-barca[data-goals="48"] {
+            --final-height: 61%;
+        }
+
+        .bar-barca[data-goals="51"] {
+            --final-height: 65%;
+        }
+
+        .bar-barca[data-goals="47"] {
+            --final-height: 59%;
+        }
+
+        .bar-barca[data-goals="45"] {
+            --final-height: 57%;
+        }
+
+        .bar-barca[data-goals="26"] {
+            --final-height: 33%;
+        }
+
+        .bar-barca[data-goals="28"] {
+            --final-height: 35%;
+        }
+
+        .bar-value-barca {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            font-weight: 800;
+            color: #a50044;
+            background: white;
+            padding: 6px 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #a50044;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .peak-year .bar-value-barca {
+            color: #b8860b;
+            border-color: #ffd700;
+            background: #fffef7;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .year-label-barca {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+
+        .barcelona-insights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .insight-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(165,0,68,0.1);
+            border-left: 4px solid #a50044;
+        }
+
+        .insight-card h4 {
+            color: #a50044;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .insight-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -292,6 +588,61 @@
             
             .stat-number {
                 font-size: 2.5rem;
+            }
+            
+            .barcelona-section-title {
+                font-size: 2rem;
+            }
+            
+            .barcelona-section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .barcelona-stats-highlight {
+                gap: 1rem;
+            }
+            
+            .highlight-box {
+                padding: 1.5rem;
+                min-width: 120px;
+            }
+            
+            .highlight-number {
+                font-size: 2.5rem;
+            }
+            
+            .barcelona-chart-wrapper {
+                gap: 0.4rem;
+                padding: 2rem 1rem;
+                min-height: 250px;
+            }
+            
+            .year-bar-barca {
+                min-width: 30px;
+            }
+            
+            .bar-container-barca {
+                height: 180px;
+                max-width: 25px;
+            }
+            
+            .bar-value-barca {
+                font-size: 0.7rem;
+                padding: 3px 6px;
+                top: -25px;
+            }
+            
+            .year-label-barca {
+                font-size: 0.7rem;
+            }
+            
+            .barcelona-insights {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .insight-card {
+                padding: 1.25rem;
             }
         }
     </style>
@@ -424,6 +775,211 @@
                     <div class="trophy-icon">👢</div>
                     <div class="trophy-name">Bota de Oro</div>
                     <div class="trophy-count">6x</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nueva sección: Goles por Año Calendario en Barcelona -->
+        <div class="barcelona-goals-section">
+            <h3 class="barcelona-section-title">⚽ Evolución Completa: Goles por Año Calendario en FC Barcelona</h3>
+            <p class="barcelona-section-subtitle">Una carrera legendaria de 18 años (2004-2021) - Total: 672 goles</p>
+            
+            <div class="barcelona-timeline-container">
+                <div class="barcelona-stats-highlight">
+                    <div class="highlight-box peak-year">
+                        <div class="highlight-number">79</div>
+                        <div class="highlight-label">Año Récord</div>
+                        <div class="highlight-year">2012</div>
+                    </div>
+                    <div class="highlight-box total-goals">
+                        <div class="highlight-number">672</div>
+                        <div class="highlight-label">Goles Totales</div>
+                        <div class="highlight-year">18 años</div>
+                    </div>
+                    <div class="highlight-box avg-goals">
+                        <div class="highlight-number">37.3</div>
+                        <div class="highlight-label">Promedio/Año</div>
+                        <div class="highlight-year">2004-2021</div>
+                    </div>
+                </div>
+
+                <div class="barcelona-chart-wrapper">
+                    <div class="year-bar-barca" data-year="2004">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="0" style="height: 0%;">
+                                <span class="bar-value-barca">0</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2004</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2005">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="3" style="height: 4%;">
+                                <span class="bar-value-barca">3</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2005</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2006">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="10" style="height: 13%;">
+                                <span class="bar-value-barca">10</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2006</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2007">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="25" style="height: 32%;">
+                                <span class="bar-value-barca">25</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2007</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2008">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="20" style="height: 25%;">
+                                <span class="bar-value-barca">20</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2008</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2009">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="38" style="height: 48%;">
+                                <span class="bar-value-barca">38</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2009</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2010">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="58" style="height: 73%;">
+                                <span class="bar-value-barca">58</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2010</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2011">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="55" style="height: 70%;">
+                                <span class="bar-value-barca">55</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2011</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2012">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca peak-bar" data-goals="79" style="height: 100%;">
+                                <span class="bar-value-barca">79</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2012</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2013">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="39" style="height: 49%;">
+                                <span class="bar-value-barca">39</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2013</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2014">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="50" style="height: 63%;">
+                                <span class="bar-value-barca">50</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2014</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2015">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="48" style="height: 61%;">
+                                <span class="bar-value-barca">48</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2015</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2016">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="51" style="height: 65%;">
+                                <span class="bar-value-barca">51</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2016</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2017">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="50" style="height: 63%;">
+                                <span class="bar-value-barca">50</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2017</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2018">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="47" style="height: 59%;">
+                                <span class="bar-value-barca">47</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2018</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2019">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="45" style="height: 57%;">
+                                <span class="bar-value-barca">45</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2019</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2020">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="26" style="height: 33%;">
+                                <span class="bar-value-barca">26</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2020</div>
+                    </div>
+                    
+                    <div class="year-bar-barca" data-year="2021">
+                        <div class="bar-container-barca">
+                            <div class="bar-barca" data-goals="28" style="height: 35%;">
+                                <span class="bar-value-barca">28</span>
+                            </div>
+                        </div>
+                        <div class="year-label-barca">2021</div>
+                    </div>
+                </div>
+
+                <div class="barcelona-insights">
+                    <div class="insight-card">
+                        <h4>🚀 Años Dorados (2009-2012)</h4>
+                        <p>Período de máxima explosión goleadora bajo Guardiola</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>👑 Era de Consistencia (2013-2019)</h4>
+                        <p>Mantuvo +45 goles por 7 años consecutivos</p>
+                    </div>
+                    <div class="insight-card">
+                        <h4>📉 Declive Final (2020-2021)</h4>
+                        <p>Últimos años afectados por edad y situación del club</p>
+                    </div>
                 </div>
             </div>
         </div>
