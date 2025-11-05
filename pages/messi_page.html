@@ -5,29 +5,438 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messi en Barcelona - Su Mejor Versión</title>
     <meta name="description" content="La etapa dorada de Lionel Messi en el FC Barcelona: estadísticas, títulos y momentos memorables.">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #a50044 0%, #7a0033 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(165,0,68,0.9), rgba(122,0,51,0.9)), url('../images/MessiBarcelona.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .club-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .club-logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #fff, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero-period {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffed4e;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .stats-container {
+            background: rgba(255,255,255,0.95);
+            margin: -100px auto 0;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 10;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .stats-header {
+            background: linear-gradient(135deg, #a50044, #7a0033);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .stats-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .stats-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0;
+            padding: 0;
+        }
+
+        .stat-card {
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-right: 1px solid rgba(165,0,68,0.1);
+        }
+
+        .stat-card:last-child {
+            border-right: none;
+        }
+
+        .stat-card:hover {
+            background: linear-gradient(135deg, #a50044 0%, #7a0033 100%);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(165,0,68,0.3);
+        }
+
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #a50044, #7a0033);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .stat-icon {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.1);
+        }
+
+        .stat-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #a50044;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .stat-number {
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .stat-label {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .achievements-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            text-align: center;
+        }
+
+        .achievements-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #a50044;
+            margin-bottom: 3rem;
+        }
+
+        .trophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trophy-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .trophy-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(165,0,68,0.2);
+        }
+
+        .trophy-icon {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .trophy-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .trophy-count {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #a50044;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .stats-container {
+                margin: -50px 20px 0;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>FC Barcelona (2004-2021)</h2>
-        <img src="../images/MessiBarcelona.jpg" alt="Lionel Messi en su mejor versión con el Barcelona" class="fade-in">
-        <p class="centered-text highlight">Su Mejor Versión</p>
-        <p class="text-center mb-20">En el Barcelona, Messi alcanzó la cima del fútbol mundial, convirtiéndose en una leyenda del deporte.</p>
-        
-        <div class="stats-section">
-            <p class="left-aligned">Partidos: <span class="badge badge-barcelona">778</span></p>
-            <p class="left-aligned">Goles: <span class="badge badge-barcelona">672</span></p>
-            <p class="left-aligned">Asistencias: <span class="badge badge-barcelona">269</span></p>
-            <p class="left-aligned">Títulos: <span class="badge badge-barcelona">35</span></p>
+    <!-- Botón Volver -->
+    <div style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
+        <button onclick="history.back()" style="
+            background: rgba(255,255,255,0.9);
+            border: 2px solid #a50044;
+            color: #a50044;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        " onmouseover="this.style.background='#a50044'; this.style.color='white';" 
+           onmouseout="this.style.background='rgba(255,255,255,0.9)'; this.style.color='#a50044';">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="club-logo">
+                <img src="../images/EscudoBar.png" alt="FC Barcelona">
+            </div>
+            <h1 class="hero-title">FC BARCELONA</h1>
+            <p class="hero-subtitle">Su Mejor Versión</p>
+            <p class="hero-period">2004 - 2021</p>
+            <p class="hero-description">
+                En el Barcelona, Messi alcanzó la cima del fútbol mundial, escribiendo la historia más gloriosa 
+                de su carrera y convirtiéndose en una leyenda eterna del deporte rey.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Container -->
+    <div class="stats-container">
+        <div class="stats-header">
+            <h2>Estadísticas en el Barcelona</h2>
+            <p>Los números que definen una era dorada</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <div class="stat-number" id="barcelona-matches">778</div>
+                <div class="stat-label">Partidos Jugados</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="stat-number" id="barcelona-goals">672</div>
+                <div class="stat-label">Goles Marcados</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="stat-number" id="barcelona-assists">269</div>
+                <div class="stat-label">Asistencias</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="stat-number" id="barcelona-titles">35</div>
+                <div class="stat-label">Títulos Ganados</div>
+            </div>
+        </div>
+
+        <div class="achievements-section">
+            <h3 class="achievements-title">Principales Logros</h3>
+            <div class="trophy-grid">
+                <div class="trophy-item">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-name">La Liga</div>
+                    <div class="trophy-count">10x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-name">Champions League</div>
+                    <div class="trophy-count">4x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-name">Copa del Rey</div>
+                    <div class="trophy-count">7x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-name">Supercopa España</div>
+                    <div class="trophy-count">8x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-name">Supercopa Europa</div>
+                    <div class="trophy-count">3x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🌍</div>
+                    <div class="trophy-name">Mundial de Clubes</div>
+                    <div class="trophy-count">3x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🥇</div>
+                    <div class="trophy-name">Balón de Oro</div>
+                    <div class="trophy-count">6x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">👑</div>
+                    <div class="trophy-name">Pichichi</div>
+                    <div class="trophy-count">8x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">👢</div>
+                    <div class="trophy-name">Bota de Oro</div>
+                    <div class="trophy-count">6x</div>
+                </div>
+            </div>
         </div>
     </div>
     
-    <!-- Sistema de estadísticas dinámicas -->
-    <script src="../js/messi-stats.js"></script>
-    <script src="../js/messi-api-updater.js"></script>
-</body>
-</html>
+    <!-- Indicador de datos verificados -->
+    <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-top: 1px solid #e9ecef;">
+        <small id="last-updated" style="color: #666; font-size: 0.85rem;">
+            📊 Datos oficiales verificados con Wikipedia
+        </small>
     </div>
 
+    <!-- Sistema de estadísticas dinámicas -->
+    <script src="../js/messi-stats-loader.js"></script>
 </body>
 </html>

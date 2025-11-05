@@ -5,25 +5,464 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messi en la Selección Argentina - Se le Dió</title>
     <meta name="description" content="El sueño cumplido de Lionel Messi con la Selección Argentina: Copa América, Mundial y el reconocimiento eterno.">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #75aadb 0%, #5a8fc4 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(117,170,219,0.9), rgba(90,143,196,0.9)), url('../images/MessiSeleccion.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .club-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255,255,255,0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .club-logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            color: #ffd700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .hero-period {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .stats-container {
+            background: rgba(255,255,255,0.95);
+            margin: -100px auto 0;
+            max-width: 1200px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 10;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .stats-header {
+            background: linear-gradient(135deg, #75aadb, #5a8fc4);
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .stats-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.08"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.08"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .stats-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0;
+            padding: 0;
+        }
+
+        .stat-card {
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-right: 1px solid rgba(117,170,219,0.2);
+        }
+
+        .stat-card:last-child {
+            border-right: none;
+        }
+
+        .stat-card:hover {
+            background: linear-gradient(135deg, #75aadb 0%, #5a8fc4 100%);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(117,170,219,0.4);
+        }
+
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #75aadb, #5a8fc4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .stat-icon {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.1);
+        }
+
+        .stat-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #75aadb;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .stat-number {
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover .stat-label {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .achievements-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            text-align: center;
+        }
+
+        .achievements-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #75aadb;
+            margin-bottom: 1rem;
+        }
+
+        .achievements-subtitle {
+            font-size: 1.3rem;
+            color: #ffd700;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        .trophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trophy-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .trophy-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(117,170,219,0.3);
+        }
+
+        .trophy-item.highlight {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            transform: scale(1.05);
+        }
+
+        .trophy-item.highlight:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .trophy-icon {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .trophy-item.highlight .trophy-icon {
+            color: #333;
+        }
+
+        .trophy-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .trophy-count {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #75aadb;
+        }
+
+        .trophy-item.highlight .trophy-count {
+            color: #333;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .stats-container {
+                margin: -50px 20px 0;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .trophy-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Selección Argentina (2005-presente)</h2>
-        <img src="../images/MessiSeleccion.jpg" alt="Lionel Messi cumpliendo su sueño con Argentina" class="fade-in">
-        <p class="centered-text highlight">Se le Dió 🏆</p>
-        <p class="text-center mb-20">Después de años de sufrimiento, Messi finalmente conquistó todo con su querida Argentina: Copa América 2021, Finalissima 2022 y el Mundial 2022.</p>
-        
-        <div class="stats-section">
-            <p class="left-aligned">Partidos: <span class="badge badge-argentina">190</span></p>
-            <p class="left-aligned">Goles: <span class="badge badge-argentina">111</span></p>
-            <p class="left-aligned">Asistencias: <span class="badge badge-argentina">59</span></p>
-            <p class="left-aligned">Títulos: <span class="badge badge-argentina">6</span></p>
+    <!-- Botón Volver -->
+    <div style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
+        <button onclick="history.back()" style="
+            background: rgba(255,255,255,0.9);
+            border: 2px solid #75aadb;
+            color: #75aadb;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        " onmouseover="this.style.background='#75aadb'; this.style.color='white';" 
+           onmouseout="this.style.background='rgba(255,255,255,0.9)'; this.style.color='#75aadb';">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="club-logo">
+                <img src="../images/EscudoAFA.png" alt="Selección Argentina">
+            </div>
+            <h1 class="hero-title">SELECCIÓN ARGENTINA</h1>
+            <p class="hero-subtitle">¡Se le Dió! 🏆⭐⭐⭐</p>
+            <p class="hero-period">2005 - presente</p>
+            <p class="hero-description">
+                Después de años de sufrimiento y finales perdidas, Messi finalmente conquistó todo 
+                con su querida Argentina: Copa América 2021, Finalissima 2022 y la gloria máxima, 
+                el Mundial de Qatar 2022. El sueño eterno se hizo realidad.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Container -->
+    <div class="stats-container">
+        <div class="stats-header">
+            <h2>Estadísticas con Argentina</h2>
+            <p>El legado completo del capitán eterno</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <div class="stat-number" id="argentina-matches">195</div>
+                <div class="stat-label">Partidos Jugados</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="stat-number" id="argentina-goals">114</div>
+                <div class="stat-label">Goles Marcados</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="stat-number" id="argentina-assists">61</div>
+                <div class="stat-label">Asistencias</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="stat-number" id="argentina-titles">6</div>
+                <div class="stat-label">Títulos Ganados</div>
+            </div>
+        </div>
+
+        <div class="achievements-section">
+            <h3 class="achievements-title">Logros con la Albiceleste</h3>
+            <p class="achievements-subtitle">👑 El sueño cumplido de toda una nación</p>
+            <div class="trophy-grid">
+                <div class="trophy-item highlight">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-name">Mundial FIFA</div>
+                    <div class="trophy-count">1x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-name">Copa América</div>
+                    <div class="trophy-count">2x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-name">Finalissima</div>
+                    <div class="trophy-count">1x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🥇</div>
+                    <div class="trophy-name">JJ.OO. Beijing</div>
+                    <div class="trophy-count">1x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="trophy-name">Mundial Sub-20</div>
+                    <div class="trophy-count">1x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🥇</div>
+                    <div class="trophy-name">Balón de Oro Mundial</div>
+                    <div class="trophy-count">2x</div>
+                </div>
+                <div class="trophy-item">
+                    <div class="trophy-icon">🥇</div>
+                    <div class="trophy-name">Balón de Oro Copa América</div>
+                    <div class="trophy-count">2x</div>
+                </div>
+            </div>
         </div>
     </div>
     
+    <!-- Indicador de datos verificados -->
+    <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-top: 1px solid #e9ecef;">
+        <small id="last-updated" style="color: #666; font-size: 0.85rem;">
+            📊 Datos oficiales verificados con Wikipedia
+        </small>
+    </div>
+
     <!-- Sistema de estadísticas dinámicas -->
-    <script src="../js/messi-stats.js"></script>
-    <script src="../js/messi-api-updater.js"></script>
+    <script src="../js/messi-stats-loader.js"></script>
 </body>
 </html>
