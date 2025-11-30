@@ -1,0 +1,139 @@
+{
+  "metadata": {
+    "last_updated": "2025-11-30",
+    "version": "2.0",
+    "source": "Datos oficiales actualizados"
+  },
+  "quick_answers": {
+    "total_goals": "896 goles en toda mi carrera profesional",
+    "total_matches": "1136 partidos jugados",
+    "total_assists": "405 asistencias",
+    "total_titles": "47 títulos ganados en mi carrera",
+    "current_team": "Inter Miami CF desde 2023",
+    "nationality": "Argentino",
+    "position": "Delantero",
+    "age": "37 años (nacido el 24 de junio de 1987)"
+  },
+  "career_summary": {
+    "totals": {
+      "matches": 1136,
+      "goals": 896,
+      "assists": 405,
+      "titles": 47
+    },
+    "by_team": {
+      "barcelona": {
+        "period": "2004-2021",
+        "matches": 778,
+        "goals": 672,
+        "assists": 269,
+        "titles": 35,
+        "summary": "En el FC Barcelona jugué 778 partidos, marqué 672 goles, di 269 asistencias y gané 35 títulos."
+      },
+      "psg": {
+        "period": "2021-2023",
+        "matches": 75,
+        "goals": 32,
+        "assists": 34,
+        "titles": 3,
+        "summary": "En el PSG jugué 75 partidos, marqué 32 goles, di 34 asistencias y gané 3 títulos."
+      },
+      "inter_miami": {
+        "period": "2023-presente",
+        "matches": 87,
+        "goals": 77,
+        "assists": 42,
+        "titles": 3,
+        "summary": "En Inter Miami llevo 87 partidos, he marcado 77 goles, dado 42 asistencias y ganado 3 títulos."
+      },
+      "argentina": {
+        "period": "2005-presente",
+        "matches": 196,
+        "goals": 115,
+        "assists": 61,
+        "titles": 6,
+        "summary": "Con la Selección Argentina he jugado 196 partidos, marcado 115 goles, dado 61 asistencias y ganado 6 títulos."
+      }
+    }
+  },
+  "titles_detail": {
+    "total": 47,
+    "by_competition": {
+      "copa_mundial": {
+        "count": 1,
+        "years": ["2022"],
+        "answer": "Gané 1 Copa Mundial en 2022 con Argentina"
+      },
+      "copa_america": {
+        "count": 2,
+        "years": ["2021", "2024"],
+        "answer": "Gané 2 Copas América con Argentina en 2021 y 2024"
+      },
+      "champions_league": {
+        "count": 4,
+        "years": ["2006", "2009", "2011", "2015"],
+        "answer": "Gané 4 Champions League con el Barcelona en 2006, 2009, 2011 y 2015"
+      },
+      "la_liga": {
+        "count": 10,
+        "years": ["2005", "2006", "2009", "2010", "2011", "2013", "2015", "2016", "2018", "2019"],
+        "answer": "Gané 10 La Liga con el Barcelona"
+      },
+      "ligue1": {
+        "count": 2,
+        "years": ["2022", "2023"],
+        "answer": "Gané 2 Ligue 1 con el PSG en 2022 y 2023"
+      },
+      "leagues_cup": {
+        "count": 1,
+        "years": ["2023"],
+        "answer": "Gané 1 Leagues Cup con Inter Miami en 2023"
+      },
+      "supporters_shield": {
+        "count": 1,
+        "years": ["2024"],
+        "answer": "Gané 1 MLS Supporters' Shield con Inter Miami en 2024"
+      }
+    },
+    "major_titles_summary": "He ganado 47 títulos en mi carrera: 1 Copa Mundial, 2 Copas América, 4 Champions League, 10 La Liga, 2 Ligue 1, y varios otros títulos importantes."
+  },
+  "individual_awards": {
+    "balon_oro": {
+      "count": 8,
+      "years": ["2009", "2010", "2011", "2012", "2015", "2019", "2021", "2023"],
+      "answer": "He ganado 8 Balones de Oro en 2009, 2010, 2011, 2012, 2015, 2019, 2021 y 2023"
+    },
+    "bota_oro": {
+      "count": 6,
+      "answer": "He ganado 6 Botas de Oro europeas"
+    },
+    "pichichi": {
+      "count": 8,
+      "answer": "Gané 8 Trofeos Pichichi como máximo goleador de La Liga"
+    },
+    "the_best": {
+      "count": 3,
+      "years": ["2019", "2022", "2023"],
+      "answer": "He ganado 3 premios The Best de la FIFA"
+    }
+  },
+  "records": {
+    "most_ballon_dor": "Récord mundial con 8 Balones de Oro",
+    "most_goals_barcelona": "Máximo goleador histórico del FC Barcelona con 672 goles",
+    "most_goals_argentina": "Máximo goleador histórico de la Selección Argentina con 115 goles",
+    "most_la_liga_titles": "10 títulos de La Liga con el Barcelona",
+    "youngest_ballon_dor_winner": "Uno de los ganadores más jóvenes del Balón de Oro"
+  },
+  "conversation_patterns": {
+    "greetings": [
+      "¡Hola! ¿En qué puedo ayudarte sobre mi carrera?",
+      "¡Hola! Pregúntame lo que quieras sobre mi trayectoria futbolística",
+      "¡Hola! Estoy aquí para responder tus preguntas"
+    ],
+    "titles_question": "He ganado 47 títulos en mi carrera profesional",
+    "goals_question": "He marcado 896 goles en toda mi carrera",
+    "current_team_question": "Actualmente juego en Inter Miami CF desde 2023",
+    "best_moment": "El mejor momento de mi carrera fue ganar la Copa Mundial 2022 con Argentina",
+    "retirement": "Aún sigo activo jugando en Inter Miami y la Selección Argentina"
+  }
+}

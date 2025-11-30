@@ -23,6 +23,8 @@ class AdminPanelHandler(SimpleHTTPRequestHandler):
         
         if path == '/api/stats':
             self.send_stats()
+        elif path == '/api/bot-data':
+            self.send_bot_data()
         elif path == '/' or path == '/admin':
             self.serve_admin_panel()
         elif path.startswith('/js/'):
@@ -88,6 +90,21 @@ class AdminPanelHandler(SimpleHTTPRequestHandler):
             self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
             self.wfile.write(json.dumps(data).encode())
+            
+        except Exception as e:
+            self.send_error(500, str(e))
+    
+    def send_bot_data(self):
+        """Envía los datos optimizados para el bot"""
+        try:
+            with open('js/messi-bot-data.json', 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps(data, ensure_ascii=False).encode())
             
         except Exception as e:
             self.send_error(500, str(e))

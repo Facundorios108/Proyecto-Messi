@@ -19,6 +19,8 @@ class MessiProxyHandler(BaseHTTPRequestHandler):
             self.serve_status_page()
         elif self.path == '/api/stats':
             self.serve_messi_stats()
+        elif self.path == '/api/bot-data':
+            self.serve_bot_data()
         elif self.path == '/api/update':
             self.update_stats()
         else:
@@ -130,6 +132,26 @@ class MessiProxyHandler(BaseHTTPRequestHandler):
             
         except Exception as e:
             self.send_error(500, f"Error al leer estadísticas: {str(e)}")
+    
+    def serve_bot_data(self):
+        """Servir datos optimizados para el bot"""
+        try:
+            # Leer archivo JSON optimizado para el bot
+            bot_file = 'js/messi-bot-data.json'
+            if os.path.exists(bot_file):
+                with open(bot_file, 'r', encoding='utf-8') as f:
+                    bot_data = json.load(f)
+            else:
+                bot_data = {"error": "Archivo de datos del bot no encontrado"}
+            
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.send_cors_headers()
+            self.end_headers()
+            self.wfile.write(json.dumps(bot_data, ensure_ascii=False).encode())
+            
+        except Exception as e:
+            self.send_error(500, f"Error al leer datos del bot: {str(e)}")
     
     def update_stats(self):
         """Forzar actualización de estadísticas"""

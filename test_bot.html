@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Chatbot Messi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            color: #0ef;
+        }
+        .test-section {
+            background: #16213e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #0ef;
+        }
+        .question {
+            color: #ffd700;
+            font-weight: bold;
+            margin: 10px 0 5px 0;
+        }
+        .answer {
+            background: #0f3460;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            white-space: pre-line;
+        }
+        button {
+            background: #0ef;
+            color: #1a1a2e;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0dd;
+        }
+        #status {
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #0f3460;
+        }
+        .success { color: #0f0; }
+        .error { color: #f00; }
+    </style>
+</head>
+<body>
+    <h1>🤖 Test del Chatbot de Messi</h1>
+    
+    <div id="status">Cargando datos...</div>
+    
+    <button onclick="runAllTests()">▶️ Ejecutar Todas las Pruebas</button>
+    <button onclick="clearResults()">🗑️ Limpiar Resultados</button>
+    
+    <div id="results"></div>
+
+    <script>
+        let botData = null;
+
+        // Copiar funciones del chatbot
+        function normalizeText(text) {
+            return text.toLowerCase()
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                .replace(/[¿?¡!]/g, '')
+                .trim();
+        }
+
+        function extractNumbers(text) {
+            const numbers = text.match(/\d+/g);
+            return numbers ? numbers.map(n => parseInt(n)) : [];
+        }
+
+        function extractYear(text) {
+            const yearMatch = text.match(/\b(19\d{2}|20\d{2})\b/);
+            return yearMatch ? parseInt(yearMatch[0]) : null;
+        }
+
+        function analyzeQuestion(question) {
+            const normalized = normalizeText(question);
+            const numbers = extractNumbers(normalized);
+            const year = extractYear(normalized);
+            
+            const intents = {
+                goalsTotal: /(cuantos? gol|total.*gol|gol.*total|gol.*carrera|gol.*marcaste|marcaste.*gol|gol.*hiciste|hiciste.*gol|metiste.*gol|gol.*metiste)/i,
+                goalsTeam: /(gol.*en|gol.*con|gol.*barcelona|gol.*psg|gol.*miami|gol.*argentina|en.*gol|con.*gol)/i,
+                goalsYear: year !== null && /gol/i.test(normalized),
+                titlesTotal: /(cuantos? titulo|titulo.*total|titulo.*carrera|titulo.*ganaste|ganaste.*titulo|campeonato|trofeo)/i,
+                titlesSpecific: /(champions|mundial|copa.*america|liga|ligue|champion|uefa)/i,
+                wonWorldCup: /(ganaste.*mundial|mundo.*ganaste|mundial.*ganaste|campeon.*mundo|copa.*mundo|world.*cup|sos.*campeon.*mundo|fuiste.*campeon)/i,
+                balonOro: /(balon.*oro|oro.*balon|cuantos? balon|balones.*oro|pallone|golden.*ball|pelota.*oro)/i,
+                botaOro: /(bota.*oro|oro.*bota|golden.*boot|zapato.*oro)/i,
+                pichichi: /pichichi/i,
+                theBest: /(the best|fifa.*best|mejor.*fifa)/i,
+                currentTeam: /(donde.*juegas|juegas.*donde|equipo.*actual|ahora.*juegas|en.*que.*equipo|actualmente|jugando.*ahora)/i,
+                teamsPlayed: /(equipos.*jugaste|en.*que.*equipos|cuantos? equipo|todos.*equipos)/i,
+                assists: /(asistencia|pase.*gol|cuantas? asistencia)/i,
+                matches: /(partido|encuentro|juego|cuantos? partido)/i,
+                age: /(edad|anos|viejo|cuantos? anos|que.*edad|anos.*tenes)/i,
+                nationality: /(nacionalidad|de.*donde.*eres|pais|argentino|de.*donde.*sos)/i,
+                bestYear: /(mejor.*ano|ano.*mejor|mas.*gol.*ano|ano.*mas.*gol)/i,
+                records: /(record|marca|logro|mejor.*jugador)/i
+            };
+            
+            const teams = {
+                barcelona: /(barcelona|barca|barça|fc barcelona|cule|blaugrana)/i.test(normalized),
+                psg: /(psg|paris|saint.germain|parc.*princes)/i.test(normalized),
+                interMiami: /(inter.*miami|miami|mls|estados.*unidos)/i.test(normalized),
+                argentina: /(argentina|seleccion|albiceleste|nacional)/i.test(normalized)
+            };
+            
+            const competitions = {
+                champions: /(champions|uefa|copa.*europa|orejona)/i.test(normalized),
+                mundial: /(mundial|world.*cup|copa.*mundo|qatar|rusia|brasil)/i.test(normalized),
+                copaAmerica: /(copa.*america)/i.test(normalized),
+                laLiga: /(la.*liga|liga.*espana|liga.*española)/i.test(normalized),
+                ligue1: /(ligue.*1|liga.*francia|liga.*francesa)/i.test(normalized),
+                leaguesCup: /(leagues.*cup|copa.*leagues)/i.test(normalized),
+                supportersShield: /(supporters.*shield|shield)/i.test(normalized)
+            };
+            
+            return { normalized, original: question, intents, teams, competitions, numbers, year };
+        }
+
+        async function loadBotData() {
+            try {
+                const response = await fetch('http://localhost:8888/api/bot-data');
+                botData = await response.json();
+                document.getElementById('status').innerHTML = '<span class="success">✅ Datos cargados correctamente</span>';
+                console.log('Bot data loaded:', botData);
+            } catch (error) {
+                document.getElementById('status').innerHTML = '<span class="error">❌ Error cargando datos: ' + error.message + '</span>';
+                console.error('Error loading bot data:', error);
+            }
+        }
+
+        function testQuestion(question) {
+            const analysis = analyzeQuestion(question);
+            
+            // Detectar intento detectado
+            let detectedIntent = 'Ninguno';
+            for (const [key, regex] of Object.entries(analysis.intents)) {
+                if (regex.test && regex.test(analysis.normalized)) {
+                    detectedIntent = key;
+                    break;
+                }
+            }
+            
+            // Detectar equipos
+            let detectedTeams = Object.entries(analysis.teams)
+                .filter(([_, value]) => value)
+                .map(([key, _]) => key)
+                .join(', ') || 'Ninguno';
+            
+            // Detectar competiciones
+            let detectedCompetitions = Object.entries(analysis.competitions)
+                .filter(([_, value]) => value)
+                .map(([key, _]) => key)
+                .join(', ') || 'Ninguno';
+            
+            return {
+                question,
+                intent: detectedIntent,
+                teams: detectedTeams,
+                competitions: detectedCompetitions,
+                normalized: analysis.normalized
+            };
+        }
+
+        function runAllTests() {
+            const testQuestions = [
+                "¿Cuántos balones de oro ganaste?",
+                "¿Ganaste un mundial?",
+                "¿Sos campeón del mundo?",
+                "¿Cuántos goles hiciste en Barcelona?",
+                "Goles con Argentina",
+                "¿Cuántas Champions League ganaste?",
+                "¿Dónde juegas ahora?",
+                "¿Cuántos títulos ganaste?",
+                "¿Cuántas botas de oro tenés?",
+                "Récords de Messi",
+                "¿Qué edad tenés?",
+                "¿De dónde sos?",
+                "Goles en Inter Miami",
+                "¿Cuántos pichichis ganaste?",
+                "¿Cuál fue tu mejor año?"
+            ];
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            testQuestions.forEach(q => {
+                const result = testQuestion(q);
+                
+                const testDiv = document.createElement('div');
+                testDiv.className = 'test-section';
+                testDiv.innerHTML = `
+                    <div class="question">❓ ${result.question}</div>
+                    <div class="answer">
+                        <strong>Intent detectado:</strong> ${result.intent}<br>
+                        <strong>Equipos detectados:</strong> ${result.teams}<br>
+                        <strong>Competiciones detectadas:</strong> ${result.competitions}<br>
+                        <strong>Texto normalizado:</strong> ${result.normalized}
+                    </div>
+                `;
+                resultsDiv.appendChild(testDiv);
+            });
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+
+        // Cargar datos al iniciar
+        loadBotData();
+    </script>
+</body>
+</html>
