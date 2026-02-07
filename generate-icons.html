@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Iconos PWA - Messi Stats</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .preview {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .preview img {
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 15px;
+            border: 2px solid #e2e8f0;
+        }
+        .icon-size {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        canvas {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 100%;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 10px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .download-btn {
+            background: #48bb78;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            margin: 5px;
+        }
+        .instructions {
+            background: #edf2f7;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+        }
+        .instructions h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .instructions ol {
+            margin-left: 20px;
+        }
+        .instructions li {
+            margin: 10px 0;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        .status {
+            text-align: center;
+            padding: 15px;
+            background: #c6f6d5;
+            color: #22543d;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 600;
+            display: none;
+        }
+        .status.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Generador de Iconos PWA</h1>
+        <p class="subtitle">Crea todos los iconos necesarios para tu app de Messi</p>
+
+        <div class="preview">
+            <h3>Selecciona la Imagen para los Iconos</h3>
+            <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="loadImage(event)">
+            <button class="btn" onclick="document.getElementById('imageUpload').click()">📁 Seleccionar Imagen</button>
+            <div style="margin-top: 20px;">
+                <img id="originalImage" alt="Messi" style="display: none; max-width: 300px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            </div>
+        </div>
+
+        <button class="btn" id="generateBtn" onclick="generateAllIcons()" style="display: none;">✨ Generar Todos los Iconos</button>
+
+        <div class="status" id="status">✅ ¡Iconos generados correctamente!</div>
+
+        <div class="icon-grid" id="iconGrid"></div>
+
+        <div class="instructions">
+            <h3>📋 Instrucciones:</h3>
+            <ol>
+                <li>Haz clic en "Generar Todos los Iconos" para crear los iconos en todos los tamaños</li>
+                <li>Descarga cada icono haciendo clic en el botón "Descargar" debajo de cada uno</li>
+                <li>Guarda todos los iconos en la carpeta <strong>/images/</strong> de tu proyecto</li>
+                <li>Los nombres de archivo ya están configurados correctamente (icon-72x72.png, etc.)</li>
+                <li>Una vez guardados, tu PWA estará lista para subir a Netlify</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        const iconSizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        let uploadedImage = null;
+        
+        function loadImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            uploadedImage
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.getElementById('originalImage');
+                img.src = e.target.result;
+                img.style.display = 'block';
+                
+                // Esperar a que la imagen cargue
+                img.onload = function() {
+                    uploadedImage = img;
+                    document.getElementById('generateBtn').style.display = 'inline-block';
+                    
+                    // Mostrar mensaje de éxito
+                    const statusDiv = document.getElementById('status');
+                    statusDiv.textContent = '✅ Imagen cargada correctamente. Ahora genera los iconos.';
+                    statusDiv.style.background = '#c6f6d5';
+                    statusDiv.style.color = '#22543d';
+                    statusDiv.classList.add('show');
+                    setTimeout(() => {
+                        statusDiv.classList.remove('show');
+                    }, 3000);
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        async function generateAllIcons() {
+            if (!uploadedImage) {
+                alert('⚠️ Por favor, primero selecciona una imagen');
+                return;
+            }
+            const iconGrid = document.getElementById('iconGrid');
+            iconGrid.innerHTML = '';
+            
+            const img = document.getElementById('originalImage');
+            
+            for (const size of iconSizes) {
+                const iconItem = document.createElement('div');
+                iconItem.className = 'icon-item';
+                
+                const sizeLabel = document.createElement('div');
+                sizeLabel.className = 'icon-size';
+                sizeLabel.textContent = `${size}x${size}`;
+                
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                canvas.id = `canvas-${size}`;
+                
+                const ctx = canvas.getContext('2d');
+                
+                // Dibujar fondo con gradiente
+                const gradient = ctx.createLinearGradient(0, 0, size, size);
+                gradient.addColorStop(0, '#667eea');
+                gradient.addColorStop(1, '#764ba2');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, size, size);
+                
+                // Calcular dimensiones para cubrir todo el canvas (como background-size: cover)
+                const imgRatio = img.naturalWidth / img.naturalHeight;
+                const canvasRatio = 1; // Es cuadrado
+                
+                let drawWidth, drawHeight, offsetX, offsetY;
+                
+                if (imgRatio > canvasRatio) {
+                    // Imagen más ancha - ajustar por altura
+                    drawHeight = size;
+                    drawWidth = drawHeight * imgRatio;
+                    offsetX = (size - drawWidth) / 2;
+                    offsetY = 0;
+                } else {
+                    // Imagen más alta - ajustar por anchura
+                    drawWidth = size;
+                    drawHeight = drawWidth / imgRatio;
+                    offsetX = 0;
+                    offsetY = (size - drawHeight) / 2;
+                }
+                
+                // Dibujar la imagen
+                ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+                
+                const downloadBtn = document.createElement('button');
+                downloadBtn.className = 'btn download-btn';
+                downloadBtn.textContent = '⬇️ Descargar';
+                downloadBtn.onclick = () => downloadIcon(canvas, size);
+                
+                iconItem.appendChild(sizeLabel);
+                iconItem.appendChild(canvas);
+                iconItem.appendChild(downloadBtn);
+                iconGrid.appendChild(iconItem);
+            }
+            
+            document.getElementById('status').classList.add('show');
+            setTimeout(() => {
+                document.getElementById('status').classList.remove('show');
+            }, 3000);
+        }
+        
+        function downloadIcon(canvas, size) {
+            canvas.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `icon-${size}x${size}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+        }
+    </script>
+</body>
+</html>

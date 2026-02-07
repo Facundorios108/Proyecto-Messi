@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔌 Sin Conexión - Messi Stats</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .offline-container {
+            background: white;
+            border-radius: 30px;
+            padding: 60px 40px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .offline-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+        h1 {
+            color: #2d3748;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .message {
+            color: #718096;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .features {
+            background: #f7fafc;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        .features h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .features ul {
+            list-style: none;
+        }
+        .features li {
+            color: #4a5568;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .features li:before {
+            content: "✅";
+            font-size: 1.2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+        }
+        .status {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #fed7d7;
+            color: #c53030;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .status.online {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .checking {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        <h1>Sin Conexión a Internet</h1>
+        <p class="message">
+            No te preocupes, gracias a nuestra tecnología PWA, 
+            puedes seguir navegando por el contenido que ya visitaste.
+        </p>
+
+        <div class="features">
+            <h3>📱 Aún puedes acceder a:</h3>
+            <ul>
+                <li>Estadísticas principales de Messi</li>
+                <li>Datos de FC Barcelona</li>
+                <li>Información de PSG</li>
+                <li>Stats de Inter Miami</li>
+                <li>Datos de la Selección Argentina</li>
+            </ul>
+        </div>
+
+        <p class="message" style="font-size: 1rem; margin-top: 20px;">
+            Cuando recuperes la conexión, la app se actualizará automáticamente 
+            con los datos más recientes.
+        </p>
+
+        <div id="status" class="status">
+            🔴 Sin conexión
+            <span class="checking"></span>
+        </div>
+
+        <button class="btn" onclick="location.reload()">
+            🔄 Intentar de nuevo
+        </button>
+
+        <div style="margin-top: 30px;">
+            <a href="/" style="color: #667eea; text-decoration: none; font-weight: 600;">
+                ← Volver al inicio
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Verificar conexión constantemente
+        function checkConnection() {
+            const statusDiv = document.getElementById('status');
+            
+            if (navigator.onLine) {
+                statusDiv.className = 'status online';
+                statusDiv.innerHTML = '🟢 ¡Conexión restaurada!';
+                
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            } else {
+                statusDiv.className = 'status';
+                statusDiv.innerHTML = '🔴 Sin conexión <span class="checking"></span>';
+            }
+        }
+
+        // Eventos de conexión
+        window.addEventListener('online', checkConnection);
+        window.addEventListener('offline', checkConnection);
+
+        // Verificar cada 3 segundos
+        setInterval(checkConnection, 3000);
+
+        // Primera verificación
+        checkConnection();
+
+        // Intentar cargar la página principal desde caché
+        if ('caches' in window) {
+            caches.match('/index.html').then(response => {
+                if (response) {
+                    console.log('✅ Página principal disponible en caché');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

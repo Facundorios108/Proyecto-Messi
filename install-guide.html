@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messi Stats - Instrucciones de Instalación PWA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        .subtitle {
+            color: #718096;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+        .step {
+            background: #f7fafc;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+        .step h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        .instructions {
+            color: #4a5568;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+        .instructions ol {
+            margin-left: 20px;
+        }
+        .instructions li {
+            margin: 10px 0;
+        }
+        .instructions code {
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 5px;
+            color: #e53e3e;
+            font-family: 'Courier New', monospace;
+        }
+        .platform {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .platform h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icon {
+            font-size: 2rem;
+        }
+        .warning {
+            background: #fef5e7;
+            border-left: 5px solid #f6ad55;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .warning h3 {
+            color: #c05621;
+            margin-bottom: 10px;
+        }
+        .warning p {
+            color: #744210;
+            line-height: 1.6;
+        }
+        .success {
+            background: #c6f6d5;
+            border-left: 5px solid #48bb78;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .success h3 {
+            color: #22543d;
+            margin-bottom: 10px;
+        }
+        .success p {
+            color: #22543d;
+            line-height: 1.6;
+        }
+        .screenshot {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+        }
+        .btn-secondary {
+            background: #48bb78;
+        }
+        .checklist {
+            list-style: none;
+        }
+        .checklist li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+        .checklist li:before {
+            content: "✅ ";
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Guía de Instalación PWA</h1>
+        <p class="subtitle">Convierte tu app de Messi en una aplicación instalable</p>
+
+        <div class="success">
+            <h3>✅ ¡Tu PWA está lista!</h3>
+            <p>Todos los archivos necesarios han sido creados. Sigue esta guía para completar la instalación.</p>
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">1</span> Generar los Iconos</h2>
+            <div class="instructions">
+                <p>Primero necesitas generar todos los iconos de la aplicación:</p>
+                <ol>
+                    <li>Abre el archivo <code>generate-icons.html</code> en tu navegador</li>
+                    <li>Haz clic en el botón "✨ Generar Todos los Iconos"</li>
+                    <li>Descarga cada icono usando el botón "⬇️ Descargar"</li>
+                    <li>Guarda TODOS los iconos en la carpeta <code>/images/</code></li>
+                </ol>
+                <p><strong>Iconos necesarios:</strong></p>
+                <ul class="checklist">
+                    <li>icon-72x72.png</li>
+                    <li>icon-96x96.png</li>
+                    <li>icon-128x128.png</li>
+                    <li>icon-144x144.png</li>
+                    <li>icon-152x152.png</li>
+                    <li>icon-192x192.png</li>
+                    <li>icon-384x384.png</li>
+                    <li>icon-512x512.png</li>
+                </ul>
+            </div>
+            <a href="generate-icons.html" class="btn">🎨 Abrir Generador de Iconos</a>
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">2</span> Subir a Netlify</h2>
+            <div class="instructions">
+                <div class="platform">
+                    <h3>📤 Opción 1: Drag & Drop (Más fácil)</h3>
+                    <ol>
+                        <li>Ve a <a href="https://app.netlify.com/drop" target="_blank">https://app.netlify.com/drop</a></li>
+                        <li>Arrastra TODA la carpeta del proyecto a la zona de Drop</li>
+                        <li>Netlify procesará y te dará una URL automáticamente</li>
+                        <li>¡Tu app estará en línea en segundos!</li>
+                    </ol>
+                </div>
+                
+                <div class="platform">
+                    <h3>🔗 Opción 2: Deploy desde Git (Recomendado)</h3>
+                    <ol>
+                        <li>Sube tu proyecto a GitHub, GitLab o Bitbucket</li>
+                        <li>Ve a <a href="https://app.netlify.com" target="_blank">https://app.netlify.com</a></li>
+                        <li>Haz clic en "Add new site" → "Import an existing project"</li>
+                        <li>Conecta tu repositorio</li>
+                        <li>Netlify detectará automáticamente la configuración</li>
+                        <li>Haz clic en "Deploy"</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">3</span> Instalar en tu Celular</h2>
+            
+            <div class="platform">
+                <h3><span class="icon">🍎</span> iPhone (iOS con Safari)</h3>
+                <div class="instructions">
+                    <ol>
+                        <li>Abre <strong>Safari</strong> (debe ser Safari, no Chrome)</li>
+                        <li>Ve a la URL de tu app en Netlify</li>
+                        <li>Toca el botón <strong>"Compartir"</strong> (cuadrado con flecha ↑)</li>
+                        <li>Desplázate hacia abajo y toca <strong>"Añadir a inicio"</strong></li>
+                        <li>Confirma el nombre (puedes cambiarlo)</li>
+                        <li>Toca <strong>"Añadir"</strong></li>
+                        <li>¡El icono de Messi aparecerá en tu pantalla de inicio! 🎉</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="platform">
+                <h3><span class="icon">🤖</span> Android (Chrome)</h3>
+                <div class="instructions">
+                    <ol>
+                        <li>Abre <strong>Chrome</strong></li>
+                        <li>Ve a la URL de tu app en Netlify</li>
+                        <li>Verás un banner que dice "Instalar App" automáticamente</li>
+                        <li>O toca el botón flotante que aparece abajo a la derecha</li>
+                        <li>También puedes: Menú <strong>⋮</strong> → <strong>"Instalar aplicación"</strong></li>
+                        <li>Confirma la instalación</li>
+                        <li>¡La app aparecerá en tu cajón de aplicaciones! 🎉</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">4</span> Verificar que Funciona</h2>
+            <div class="instructions">
+                <p>Para asegurarte de que tu PWA funciona correctamente:</p>
+                <ul class="checklist">
+                    <li>El icono debe mostrar la imagen de Messi</li>
+                    <li>Al abrir, NO debe verse la barra del navegador</li>
+                    <li>Debe funcionar en modo avión (offline)</li>
+                    <li>La carga debe ser muy rápida</li>
+                    <li>No debe haber errores en la consola</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ Importante</h3>
+            <p><strong>Requisitos obligatorios para que funcione la PWA:</strong></p>
+            <ul>
+                <li>✅ Todos los iconos deben estar en <code>/images/</code></li>
+                <li>✅ La app debe estar servida por HTTPS (Netlify lo hace automático)</li>
+                <li>✅ El <code>manifest.json</code> debe ser accesible</li>
+                <li>✅ El <code>service-worker.js</code> debe registrarse correctamente</li>
+                <li>✅ En iOS, debes usar Safari (no funciona con Chrome)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">5</span> Solución de Problemas</h2>
+            <div class="instructions">
+                <div class="platform">
+                    <h3>🔍 No aparece el prompt de instalación</h3>
+                    <ul>
+                        <li>Asegúrate de estar usando HTTPS</li>
+                        <li>Verifica que todos los archivos se hayan subido correctamente</li>
+                        <li>Intenta en modo incógnito</li>
+                        <li>Revisa la consola del navegador (F12) para ver errores</li>
+                    </ul>
+                </div>
+
+                <div class="platform">
+                    <h3>🖼️ Los iconos no se ven</h3>
+                    <ul>
+                        <li>Verifica que TODOS los archivos <code>icon-*.png</code> estén en <code>/images/</code></li>
+                        <li>Los nombres deben ser exactamente como se especifica</li>
+                        <li>Limpia la caché del navegador</li>
+                    </ul>
+                </div>
+
+                <div class="platform">
+                    <h3>📡 No funciona offline</h3>
+                    <ul>
+                        <li>Verifica que el Service Worker esté activo</li>
+                        <li>Abre DevTools → Application → Service Workers</li>
+                        <li>Debería aparecer como "activated and running"</li>
+                        <li>Intenta cerrar todas las pestañas y abrir de nuevo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="success">
+            <h3>🎉 ¡Felicitaciones!</h3>
+            <p>Si seguiste todos los pasos, ahora tienes una aplicación profesional de Messi instalada en tu celular. ¡Disfrútala y compártela con otros fans!</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="btn">🏠 Volver a la App</a>
+            <a href="PWA_GUIDE.md" class="btn btn-secondary" download>📖 Descargar Guía Completa</a>
+        </div>
+    </div>
+</body>
+</html>

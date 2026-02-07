@@ -1,0 +1,119 @@
+# Configuración para despliegue en Netlify
+# Proyecto: Messi Stats PWA
+
+[build]
+  # Directorio raíz del proyecto
+  base = "/"
+  
+  # Directorio de publicación
+  publish = "."
+  
+  # Comando de build (no es necesario para este proyecto)
+  command = "echo 'No build needed - static PWA'"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Headers para PWA
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Content-Type = "text/css"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Content-Type = "image/png"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Content-Type = "image/jpeg"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.avif"
+  [headers.values]
+    Content-Type = "image/avif"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects para PWA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Prevenir indexación de archivos innecesarios
+[[redirects]]
+  from = "/_backup_obsoletos/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+  force = false
+
+# Plugin de Headers adicionales para PWA
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  [plugins.inputs.thresholds]
+    performance = 0.9
+    accessibility = 0.9
+    best-practices = 0.9
+    seo = 0.9
+    pwa = 0.9
+
+# Contextos de despliegue
+[context.production]
+  command = "echo 'Production build'"
+  
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview]
+  command = "echo 'Preview build'"
+
+[context.branch-deploy]
+  command = "echo 'Branch build'"
+
+# Configuración de funciones (si se necesitan en el futuro)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
