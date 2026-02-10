@@ -1,547 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messi en Inter Miami - Nuevo Renacer</title>
-    <meta name="description" content="El renacimiento de Lionel Messi en Inter Miami: nueva liga, nuevos desafíos, misma magia.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="El renacimiento de Lionel Messi en Inter Miami: nueva liga, nuevos desafíos, misma magia.">
+    <meta name="theme-color" content="#F7B5CD">
+    <link rel="manifest" href="../manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #F7B5CD 0%, #e098b7 100%);
-            min-height: 100vh;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .hero-section {
-            background: linear-gradient(rgba(247,181,205,0.9), rgba(224,152,183,0.9)), url('../images/messi_inter_miami_celebrando.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 0 20px;
-            animation: fadeInUp 1s ease-out;
-            color: #2d3748;
-        }
-
-        .club-logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-            border: 3px solid rgba(45,55,72,0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .club-logo img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            background: linear-gradient(45deg, #2d3748, #e098b7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            opacity: 0.8;
-            color: #2d3748;
-        }
-
-        .hero-period {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #e098b7;
-            margin-bottom: 2rem;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            color: #2d3748;
-        }
-
-        .stats-container {
-            background: rgba(255,255,255,0.95);
-            margin: -100px auto 0;
-            max-width: 1200px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 10;
-            color: #333;
-            overflow: hidden;
-        }
-
-        .stats-header {
-            background: linear-gradient(135deg, #F7B5CD, #e098b7);
-            color: #2d3748;
-            padding: 3rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .stats-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-        }
-
-        .stats-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stats-header p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 0;
-            padding: 0;
-        }
-
-        .stat-card {
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-right: 1px solid rgba(247,181,205,0.3);
-        }
-
-        .stat-card:last-child {
-            border-right: none;
-        }
-
-        .stat-card:hover {
-            background: linear-gradient(135deg, #F7B5CD 0%, #e098b7 100%);
-            color: #2d3748;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(247,181,205,0.4);
-        }
-
-        .stat-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #F7B5CD, #e098b7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover .stat-icon {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.1);
-        }
-
-        .stat-icon i {
-            font-size: 2rem;
-            color: #2d3748;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #e098b7;
-            margin-bottom: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover .stat-number {
-            color: #2d3748;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover .stat-label {
-            color: #2d3748;
-        }
-
-        .achievements-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            text-align: center;
-        }
-
-        .achievements-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #e098b7;
-            margin-bottom: 3rem;
-        }
-
-        .trophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .trophy-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .trophy-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(247,181,205,0.3);
-        }
-
-        .trophy-icon {
-            font-size: 3rem;
-            color: #ffd700;
-            margin-bottom: 1rem;
-        }
-
-        .trophy-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .trophy-count {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #e098b7;
-        }
-
-        /* Estilos para Goles por Año */
-        .goals-by-year-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #fff5f8 0%, #f0f9ff 100%);
-            margin: 2rem 0;
-        }
-
-        .goals-by-year-section .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #e098b7;
-            text-align: center;
-            margin-bottom: 3rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
- 
-        .chart-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            gap: 3rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .chart-wrapper {
-            display: flex;
-            align-items: end;
-            gap: 2rem;
-            background: white;
-            padding: 3rem 2rem 1rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(247,181,205,0.2);
-            position: relative;
-            min-height: 350px;
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .chart-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #f7b5cd, #e098b7, #d1477a);
-            border-radius: 20px 20px 0 0;
-        }
-
-        .year-bar {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .year-bar:hover {
-            transform: scale(1.05);
-        }
-
-        .bar-container {
-            height: 250px;
-            width: 80px;
-            display: flex;
-            align-items: end;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .bar {
-            width: 100%;
-            background: linear-gradient(180deg, #f7b5cd 0%, #e098b7 50%, #d1477a 100%);
-            border-radius: 8px 8px 0 0;
-            position: relative;
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 4px 15px rgba(247,181,205,0.4);
-            animation: growBar 1.5s ease-out forwards;
-        }
-
-        @keyframes growBar {
-            from {
-                height: 0;
-            }
-            to {
-                height: var(--final-height);
-            }
-        }
-
-        .bar[data-goals="11"] {
-            --final-height: 22%;
-        }
-
-        .bar[data-goals="23"] {
-            --final-height: 46%;
-        }
-
-        .bar[data-goals="40"] {
-            --final-height: 80%;
-        }
-
-        .bar-value {
-            position: absolute;
-            top: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #d1477a;
-            background: white;
-            padding: 8px 12px;
-            border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: 2px solid #f7b5cd;
-        }
-
-        .year-label {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .year-note {
-            font-size: 0.9rem;
-            color: #666;
-            text-align: center;
-            font-style: italic;
-        }
-
-        .chart-info {
-            flex: 1;
-            min-width: 250px;
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(247,181,205,0.2);
-        }
-
-        .total-goals {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, #f7b5cd, #e098b7);
-            border-radius: 15px;
-            color: white;
-        }
-
-        .total-number {
-            display: block;
-            font-size: 4rem;
-            font-weight: 900;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .total-label {
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .chart-notes {
-            margin-top: 1rem;
-        }
-
-        .chart-notes p {
-            padding: 1rem;
-            background: #f8f9fa;
-            border-left: 4px solid #f7b5cd;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
-            font-weight: 500;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .stats-container {
-                margin: -50px 20px 0;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .chart-container {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            
-            .chart-wrapper {
-                min-height: 250px;
-                padding: 2rem 1rem;
-            }
-            
-            .bar-container {
-                height: 180px;
-                width: 60px;
-            }
-            
-            .total-number {
-                font-size: 3rem;
-            }
-            
-            .goals-by-year-section .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/team-page.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
 </head>
-<body>
-    <!-- Botón Volver -->
-    <div style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
-        <button onclick="history.back()" style="
-            background: rgba(255,255,255,0.9);
-            border: 2px solid #F7B5CD;
-            color: #d63384;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-        " onmouseover="this.style.background='#F7B5CD'; this.style.color='white';" 
-           onmouseout="this.style.background='rgba(255,255,255,0.9)'; this.style.color='#d63384';">
-            <i class="fas fa-arrow-left"></i>
-            Volver
-        </button>
-    </div>
+
+<body class="team-inter_miami">
+    <!-- Navbar -->
+    <nav class="main-navbar">
+        <a href="../index.html" class="navbar-brand">
+            Messi Stats
+        </a>
+        <ul class="navbar-links" id="navbar-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="messi_page.html">Barcelona</a></li>
+            <li><a href="messi_page2.html">PSG</a></li>
+            <li><a href="messi_page3.html" class="active">Inter Miami</a></li>
+            <li><a href="messi_page4.html">Argentina</a></li>
+        </ul>
+        <div class="navbar-actions">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema"><i
+                    class="fas fa-moon"></i></button>
+            <button class="navbar-hamburger" id="navbar-hamburger" aria-label="Menú"><i
+                    class="fas fa-bars"></i></button>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
             <div class="club-logo">
-                <img src="../images/EscudoInt.png" alt="Inter Miami CF">
+                <img src="../images/EscudoInt.png" alt="Inter Miami CF" loading="lazy">
             </div>
             <h1 class="hero-title">INTER MIAMI CF</h1>
             <p class="hero-subtitle">El Renacer de una Leyenda</p>
             <p class="hero-period">2023 - presente</p>
             <p class="hero-description">
-                En Miami, Messi ha encontrado un nuevo hogar donde vuelve a disfrutar del fútbol, 
+                En Miami, Messi ha encontrado un nuevo hogar donde vuelve a disfrutar del fútbol,
                 conectando con los fanáticos y demostrando que la magia nunca se pierde.
             </p>
         </div>
     </section>
 
     <!-- Stats Container -->
-    <div class="stats-container">
+    <div class="stats-container animate-on-scroll">
         <div class="stats-header">
             <h2>Estadísticas en Inter Miami</h2>
             <p>El impacto inmediato de una leyenda</p>
@@ -549,39 +63,28 @@
 
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-futbol"></i>
-                </div>
-                <div class="stat-number" id="inter-matches">83</div>
+                <div class="stat-icon"><i class="fas fa-futbol"></i></div>
+                <div class="stat-number" id="inter-matches">0</div>
                 <div class="stat-label">Partidos Jugados</div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-bullseye"></i>
-                </div>
-                <div class="stat-number" id="inter-goals">74</div>
+                <div class="stat-icon"><i class="fas fa-bullseye"></i></div>
+                <div class="stat-number" id="inter-goals">0</div>
                 <div class="stat-label">Goles Marcados</div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-hands-helping"></i>
-                </div>
-                <div class="stat-number" id="inter-assists">37</div>
+                <div class="stat-icon"><i class="fas fa-hands-helping"></i></div>
+                <div class="stat-number" id="inter-assists">0</div>
                 <div class="stat-label">Asistencias</div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <div class="stat-number" id="inter-titles">2</div>
+                <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                <div class="stat-number" id="inter-titles">0</div>
                 <div class="stat-label">Títulos Ganados</div>
             </div>
         </div>
 
-        <div class="achievements-section">
+        <div class="achievements-section animate-on-scroll">
             <h3 class="achievements-title">Logros en Miami</h3>
             <div class="trophy-grid">
                 <div class="trophy-item">
@@ -602,65 +105,28 @@
             </div>
         </div>
 
-        <!-- Nueva sección: Goles por Año Calendario -->
-        <div class="goals-by-year-section">
-            <h3 class="section-title">Goles por Año Calendario en Inter Miami</h3>
-            <div class="chart-container">
-                <div class="chart-wrapper">
-                    <div class="year-bar" data-year="2023">
-                        <div class="bar-container">
-                            <div class="bar" data-goals="11" style="height: 22%;">
-                                <span class="bar-value">11</span>
-                            </div>
-                        </div>
-                        <div class="year-label">2023</div>
-                        <div class="year-note">Debut en julio</div>
-                    </div>
-                    
-                    <div class="year-bar" data-year="2024">
-                        <div class="bar-container">
-                            <div class="bar" data-goals="23" style="height: 46%;">
-                                <span class="bar-value">23</span>
-                            </div>
-                        </div>
-                        <div class="year-label">2024</div>
-                        <div class="year-note">Año completo</div>
-                    </div>
-                    
-                    <div class="year-bar" data-year="2025">
-                        <div class="bar-container">
-                            <div class="bar" data-goals="40" style="height: 80%;">
-                                <span class="bar-value">40</span>
-                            </div>
-                        </div>
-                        <div class="year-label">2025</div>
-                        <div class="year-note">Hasta Nov 2</div>
-                    </div>
-                </div>
-                
-                <div class="chart-info">
-                    <div class="total-goals">
-                        <span class="total-number">74</span>
-                        <span class="total-label">Goles Totales</span>
-                    </div>
-                    <div class="chart-notes">
-                        <p>📈 Progresión ascendente año tras año</p>
-                        <p>🎯 Mejor promedio en 2025: 0.53 goles/día</p>
-                        <p>⚡ Adaptación completa al fútbol de MLS</p>
-                    </div>
-                </div>
+        <!-- Goals by Year Chart -->
+        <div class="goals-by-year-section animate-on-scroll">
+            <h3 class="section-title">🌴 Goles por Año en Inter Miami</h3>
+            <p class="section-subtitle">Progresión ascendente en la MLS (2023-2025)</p>
+            <div class="chart-canvas-container">
+                <canvas id="goals-chart" data-team="inter_miami" height="350"></canvas>
             </div>
         </div>
     </div>
-    
-    <!-- Indicador de datos verificados -->
-    <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-top: 1px solid #e9ecef;">
-        <small id="last-updated" style="color: #666; font-size: 0.85rem;">
-            📊 Datos oficiales verificados con Wikipedia
-        </small>
+
+    <!-- Verified Footer -->
+    <div class="data-verified-footer">
+        <small id="last-updated">📊 Cargando datos...</small>
     </div>
 
-    <!-- Sistema de estadísticas dinámicas -->
-    <script src="../js/messi-stats-loader.js"></script>
+    <!-- Chatbot -->
+    <div id="chat-container" class="chat-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="../js/messi-data-loader.js"></script>
+    <script src="../js/chatbot.js"></script>
 </body>
+
 </html>

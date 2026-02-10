@@ -1,11 +1,11 @@
 {
-  "last_updated": "2025-11-30 17:53:09",
+  "last_updated": "2026-02-10 19:14:33",
   "data_source": "Wikipedia oficial - verificado el 2025-11-05",
   "career_totals": {
-    "matches": 1136,
+    "matches": 1137,
     "goals": 896,
-    "assists": 405,
-    "titles": 47
+    "assists": 409,
+    "titles": 48
   },
   "teams": {
     "barcelona": {
@@ -16,6 +16,7 @@
       "assists": 269,
       "titles": 35,
       "color": "#a50044",
+      "logo": "images/EscudoBarcelona.png",
       "major_titles": {
         "la_liga": 10,
         "champions_league": 4,
@@ -31,7 +32,26 @@
         "8 Supercopa de España",
         "3 Supercopa de Europa",
         "3 Mundial de Clubes"
-      ]
+      ],
+      "goals_by_year": {
+        "2005": 9,
+        "2006": 17,
+        "2007": 36,
+        "2008": 21,
+        "2009": 45,
+        "2010": 60,
+        "2011": 59,
+        "2012": 91,
+        "2013": 45,
+        "2014": 58,
+        "2015": 52,
+        "2016": 59,
+        "2017": 54,
+        "2018": 51,
+        "2019": 50,
+        "2020": 27,
+        "2021": 28
+      }
     },
     "psg": {
       "name": "Paris Saint-Germain",
@@ -41,6 +61,7 @@
       "assists": 34,
       "titles": 3,
       "color": "#004170",
+      "logo": "images/EscudoPSG.png",
       "major_titles": {
         "ligue1": 2,
         "supercopa_francia": 1
@@ -48,16 +69,22 @@
       "achievements": [
         "2 Ligue 1 (2022, 2023)",
         "1 Supercopa de Francia (2022)"
-      ]
+      ],
+      "goals_by_year": {
+        "2021": 6,
+        "2022": 17,
+        "2023": 9
+      }
     },
     "inter_miami": {
       "name": "Inter Miami CF",
       "period": "2023-presente",
-      "matches": 87,
+      "matches": 88,
       "goals": 77,
-      "assists": 42,
-      "titles": 3,
+      "assists": 44,
+      "titles": 4,
       "color": "#F7B5CD",
+      "logo": "images/EscudoInt.png",
       "major_titles": {
         "leagues_cup": 1,
         "supporters_shield": 1
@@ -65,16 +92,22 @@
       "achievements": [
         "1 Leagues Cup (2023)",
         "1 MLS Supporters' Shield (2024)"
-      ]
+      ],
+      "goals_by_year": {
+        "2023": 11,
+        "2024": 23,
+        "2025": 40
+      }
     },
     "argentina": {
       "name": "Selección Argentina",
       "period": "2005-presente",
       "matches": 196,
       "goals": 115,
-      "assists": 61,
+      "assists": 62,
       "titles": 6,
       "color": "#75aadb",
+      "logo": "images/EscudoAFA.png",
       "major_titles": {
         "copa_mundial": 1,
         "copa_america": 2,
@@ -88,14 +121,161 @@
         "1 Finalissima (2022)",
         "1 Medalla de Oro Olímpica (2008)",
         "1 Mundial Sub-20 (2005)"
-      ]
+      ],
+      "goals_by_year": {
+        "2005": 4,
+        "2006": 8,
+        "2007": 6,
+        "2008": 5,
+        "2009": 3,
+        "2010": 2,
+        "2011": 12,
+        "2012": 12,
+        "2013": 6,
+        "2014": 8,
+        "2015": 5,
+        "2016": 8,
+        "2017": 4,
+        "2018": 4,
+        "2019": 5,
+        "2020": 1,
+        "2021": 9,
+        "2022": 18,
+        "2023": 3,
+        "2024": 6,
+        "2025": 0
+      }
     }
+  },
+  "individual_awards": {
+    "balon_oro": {
+      "count": 8,
+      "years": [
+        "2009",
+        "2010",
+        "2011",
+        "2012",
+        "2015",
+        "2019",
+        "2021",
+        "2023"
+      ],
+      "answer": "He ganado 8 Balones de Oro en 2009, 2010, 2011, 2012, 2015, 2019, 2021 y 2023"
+    },
+    "bota_oro": {
+      "count": 6,
+      "answer": "He ganado 6 Botas de Oro europeas"
+    },
+    "pichichi": {
+      "count": 8,
+      "answer": "Gané 8 Trofeos Pichichi como máximo goleador de La Liga"
+    },
+    "the_best": {
+      "count": 3,
+      "years": [
+        "2019",
+        "2022",
+        "2023"
+      ],
+      "answer": "He ganado 3 premios The Best de la FIFA"
+    }
+  },
+  "records": {
+    "most_ballon_dor": "Récord mundial con 8 Balones de Oro",
+    "most_goals_barcelona": "Máximo goleador histórico del FC Barcelona con 672 goles",
+    "most_goals_argentina": "Máximo goleador histórico de la Selección Argentina con 115 goles",
+    "most_la_liga_titles": "10 títulos de La Liga con el Barcelona",
+    "youngest_ballon_dor_winner": "Uno de los ganadores más jóvenes del Balón de Oro"
+  },
+  "titles_detail": {
+    "total": 47,
+    "by_competition": {
+      "copa_mundial": {
+        "count": 1,
+        "years": [
+          "2022"
+        ],
+        "answer": "Gané 1 Copa Mundial en 2022 con Argentina"
+      },
+      "copa_america": {
+        "count": 2,
+        "years": [
+          "2021",
+          "2024"
+        ],
+        "answer": "Gané 2 Copas América con Argentina en 2021 y 2024"
+      },
+      "champions_league": {
+        "count": 4,
+        "years": [
+          "2006",
+          "2009",
+          "2011",
+          "2015"
+        ],
+        "answer": "Gané 4 Champions League con el Barcelona en 2006, 2009, 2011 y 2015"
+      },
+      "la_liga": {
+        "count": 10,
+        "years": [
+          "2005",
+          "2006",
+          "2009",
+          "2010",
+          "2011",
+          "2013",
+          "2015",
+          "2016",
+          "2018",
+          "2019"
+        ],
+        "answer": "Gané 10 La Liga con el Barcelona"
+      },
+      "ligue1": {
+        "count": 2,
+        "years": [
+          "2022",
+          "2023"
+        ],
+        "answer": "Gané 2 Ligue 1 con el PSG en 2022 y 2023"
+      },
+      "leagues_cup": {
+        "count": 1,
+        "years": [
+          "2023"
+        ],
+        "answer": "Gané 1 Leagues Cup con Inter Miami en 2023"
+      },
+      "supporters_shield": {
+        "count": 1,
+        "years": [
+          "2024"
+        ],
+        "answer": "Gané 1 MLS Supporters' Shield con Inter Miami en 2024"
+      }
+    },
+    "major_titles_summary": "He ganado 47 títulos en mi carrera: 1 Copa Mundial, 2 Copas América, 4 Champions League, 10 La Liga, 2 Ligue 1, y varios otros títulos importantes."
+  },
+  "personal_info": {
+    "full_name": "Lionel Andrés Messi",
+    "birth_date": "1987-06-24",
+    "nationality": "Argentino",
+    "position": "Delantero",
+    "current_team": "Inter Miami CF"
+  },
+  "conversation_patterns": {
+    "greetings": [
+      "¡Hola! ¿En qué puedo ayudarte sobre mi carrera?",
+      "¡Hola! Pregúntame lo que quieras sobre mi trayectoria futbolística",
+      "¡Hola! Estoy aquí para responder tus preguntas"
+    ],
+    "best_moment": "El mejor momento de mi carrera fue ganar la Copa Mundial 2022 con Argentina",
+    "retirement": "Aún sigo activo jugando en Inter Miami y la Selección Argentina"
   },
   "verification": {
     "source": "Wikipedia ES oficial",
     "url": "https://es.wikipedia.org/wiki/Lionel_Messi",
     "verified_date": "2025-11-05",
     "note": "Datos verificados con fuentes oficiales de Wikipedia"
-  },
-  "source": "admin panel - full editor"
+  }
 }

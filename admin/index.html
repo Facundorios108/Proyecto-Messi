@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Messi Stats</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -20,84 +22,162 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .admin-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .admin-header p {
+            opacity: 0.8;
         }
 
         .panel {
             background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            margin-bottom: 20px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
         }
 
-        h1 {
-            text-align: center;
-            color: #2d3748;
-            margin-bottom: 10px;
-            font-size: 2rem;
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: #f7fafc;
+            border-bottom: 2px solid #e2e8f0;
+            overflow-x: auto;
         }
 
-        .subtitle {
-            text-align: center;
+        .tab-button {
+            flex: 1;
+            min-width: 140px;
+            padding: 1rem 1.5rem;
+            border: none;
+            background: transparent;
             color: #718096;
-            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
+        .tab-button:hover {
+            background: #edf2f7;
+            color: #4a5568;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Stats display */
         .stats-display {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 1.5rem;
         }
 
         .stat-box {
             background: #f7fafc;
             border-radius: 12px;
-            padding: 20px;
+            padding: 1.2rem;
             text-align: center;
             border-left: 4px solid var(--color);
+            transition: transform 0.2s;
         }
 
-        .stat-box.matches { --color: #3182ce; }
-        .stat-box.goals { --color: #38a169; }
-        .stat-box.assists { --color: #d69e2e; }
-        .stat-box.titles { --color: #9f7aea; }
+        .stat-box:hover {
+            transform: translateY(-2px);
+        }
+
+        .stat-box.matches {
+            --color: #3182ce;
+        }
+
+        .stat-box.goals {
+            --color: #38a169;
+        }
+
+        .stat-box.assists {
+            --color: #d69e2e;
+        }
+
+        .stat-box.titles {
+            --color: #9f7aea;
+        }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #718096;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .stat-value {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: #2d3748;
         }
 
-        .input-group {
-            margin-bottom: 20px;
+        /* Form */
+        .section-title {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .edit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .input-group label {
             display: block;
             font-weight: 600;
             color: #4a5568;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
         }
 
         .input-group input {
             width: 100%;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border: 2px solid #e2e8f0;
             border-radius: 8px;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s;
         }
 
         .input-group input:focus {
@@ -107,17 +187,16 @@
         }
 
         .button-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 30px;
+            display: flex;
+            gap: 12px;
         }
 
         .btn {
-            padding: 14px 24px;
+            flex: 1;
+            padding: 12px 20px;
             border: none;
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -134,7 +213,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
 
         .btn-secondary {
@@ -153,8 +232,8 @@
         }
 
         .status {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 1rem;
+            padding: 12px;
             border-radius: 10px;
             font-weight: 500;
             text-align: center;
@@ -173,295 +252,362 @@
             display: block;
         }
 
-        .status.info {
-            background: #bee3f8;
-            color: #2c5282;
-            display: block;
+        .info-box {
+            background: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
         }
 
-        .last-update {
-            text-align: center;
+        .info-box p {
+            color: #234e52;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .team-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .team-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .team-info h2 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .team-info p {
             color: #718096;
             font-size: 0.9rem;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .mode-toggle {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .mode-btn {
-            padding: 10px 20px;
-            border: 2px solid #e2e8f0;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #718096;
-            transition: all 0.3s ease;
-        }
-
-        .mode-btn.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .edit-mode, .view-mode {
-            display: none;
-        }
-
-        .edit-mode.active, .view-mode.active {
-            display: block;
-        }
-
-        @media (max-width: 600px) {
-            .stats-display {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .button-group {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <div class="panel">
-            <h1>⚡ Panel de Actualización</h1>
-            <p class="subtitle">Estadísticas de Lionel Messi</p>
+        <div class="admin-header">
+            <h1><i class="fas fa-shield-alt"></i> Panel de Administración</h1>
+            <p>Actualiza las estadísticas de Lionel Messi</p>
+        </div>
 
-            <div class="mode-toggle">
-                <button class="mode-btn active" onclick="switchMode('view')">👁️ Ver</button>
-                <button class="mode-btn" onclick="switchMode('edit')">✏️ Editar</button>
+        <div class="panel">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="totals">
+                    <i class="fas fa-chart-line"></i> Totales
+                </button>
+                <button class="tab-button" data-tab="barcelona">
+                    <i class="fas fa-futbol"></i> Barcelona
+                </button>
+                <button class="tab-button" data-tab="psg">
+                    <i class="fas fa-futbol"></i> PSG
+                </button>
+                <button class="tab-button" data-tab="inter_miami">
+                    <i class="fas fa-futbol"></i> Inter Miami
+                </button>
+                <button class="tab-button" data-tab="argentina">
+                    <i class="fas fa-flag"></i> Argentina
+                </button>
             </div>
 
-            <!-- MODO VISTA -->
-            <div class="view-mode active">
+            <!-- Totals Tab -->
+            <div id="totals-tab" class="tab-content active">
+                <h2 class="section-title"><i class="fas fa-trophy"></i> Totales de Carrera</h2>
+                <div class="info-box">
+                    <p><i class="fas fa-info-circle"></i> Los totales se calculan automáticamente sumando las
+                        estadísticas de todos los equipos. Para actualizar, edita las estadísticas de cada equipo en sus
+                        respectivas pestañas.</p>
+                </div>
                 <div class="stats-display">
                     <div class="stat-box matches">
-                        <div class="stat-label">⚽ Partidos</div>
-                        <div class="stat-value" id="view-matches">-</div>
+                        <div class="stat-label">Partidos</div>
+                        <div class="stat-value" id="total-matches">-</div>
                     </div>
                     <div class="stat-box goals">
-                        <div class="stat-label">🎯 Goles</div>
-                        <div class="stat-value" id="view-goals">-</div>
+                        <div class="stat-label">Goles</div>
+                        <div class="stat-value" id="total-goals">-</div>
                     </div>
                     <div class="stat-box assists">
-                        <div class="stat-label">🤝 Asistencias</div>
-                        <div class="stat-value" id="view-assists">-</div>
+                        <div class="stat-label">Asistencias</div>
+                        <div class="stat-value" id="total-assists">-</div>
                     </div>
                     <div class="stat-box titles">
-                        <div class="stat-label">🏆 Títulos</div>
-                        <div class="stat-value" id="view-titles">-</div>
+                        <div class="stat-label">Títulos</div>
+                        <div class="stat-value" id="total-titles">-</div>
                     </div>
                 </div>
-
-                <div class="button-group">
-                    <button class="btn btn-primary" onclick="loadStats()">
-                        🔄 Recargar Datos
-                    </button>
-                    <button class="btn btn-secondary" onclick="openMainPage()">
-                        📊 Ver Página Principal
-                    </button>
-                </div>
             </div>
 
-            <!-- MODO EDICIÓN -->
-            <div class="edit-mode">
-                <div class="input-group">
-                    <label for="edit-matches">⚽ Partidos Jugados</label>
-                    <input type="number" id="edit-matches" placeholder="1130">
+            <!-- Barcelona Tab -->
+            <div id="barcelona-tab" class="tab-content">
+                <div class="team-header">
+                    <img src="../images/EscudoBar.png" alt="Barcelona" class="team-logo">
+                    <div class="team-info">
+                        <h2>FC Barcelona</h2>
+                        <p>2004 - 2021</p>
+                    </div>
                 </div>
-
-                <div class="input-group">
-                    <label for="edit-goals">🎯 Goles Anotados</label>
-                    <input type="number" id="edit-goals" placeholder="889">
-                </div>
-
-                <div class="input-group">
-                    <label for="edit-assists">🤝 Asistencias</label>
-                    <input type="number" id="edit-assists" placeholder="401">
-                </div>
-
-                <div class="input-group">
-                    <label for="edit-titles">🏆 Títulos Ganados</label>
-                    <input type="number" id="edit-titles" placeholder="46">
-                </div>
-
-                <div class="button-group">
-                    <button class="btn btn-primary" onclick="saveStats()">
-                        💾 Guardar Cambios
-                    </button>
-                    <button class="btn btn-secondary" onclick="cancelEdit()">
-                        ❌ Cancelar
-                    </button>
-                </div>
+                <form id="barcelona-form">
+                    <div class="edit-grid">
+                        <div class="input-group">
+                            <label for="barcelona-matches"><i class="fas fa-calendar-alt"></i> Partidos</label>
+                            <input type="number" id="barcelona-matches" name="matches" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="barcelona-goals"><i class="fas fa-futbol"></i> Goles</label>
+                            <input type="number" id="barcelona-goals" name="goals" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="barcelona-assists"><i class="fas fa-hands-helping"></i> Asistencias</label>
+                            <input type="number" id="barcelona-assists" name="assists" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="barcelona-titles"><i class="fas fa-trophy"></i> Títulos</label>
+                            <input type="number" id="barcelona-titles" name="titles" required>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar Cambios
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="loadTeamData('barcelona')">
+                            <i class="fas fa-undo"></i> Recargar
+                        </button>
+                    </div>
+                    <div id="barcelona-status" class="status"></div>
+                </form>
             </div>
 
-            <div class="status" id="status"></div>
+            <!-- PSG Tab -->
+            <div id="psg-tab" class="tab-content">
+                <div class="team-header">
+                    <img src="../images/EscudoPSG.png" alt="PSG" class="team-logo">
+                    <div class="team-info">
+                        <h2>Paris Saint-Germain</h2>
+                        <p>2021 - 2023</p>
+                    </div>
+                </div>
+                <form id="psg-form">
+                    <div class="edit-grid">
+                        <div class="input-group">
+                            <label for="psg-matches"><i class="fas fa-calendar-alt"></i> Partidos</label>
+                            <input type="number" id="psg-matches" name="matches" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="psg-goals"><i class="fas fa-futbol"></i> Goles</label>
+                            <input type="number" id="psg-goals" name="goals" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="psg-assists"><i class="fas fa-hands-helping"></i> Asistencias</label>
+                            <input type="number" id="psg-assists" name="assists" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="psg-titles"><i class="fas fa-trophy"></i> Títulos</label>
+                            <input type="number" id="psg-titles" name="titles" required>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar Cambios
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="loadTeamData('psg')">
+                            <i class="fas fa-undo"></i> Recargar
+                        </button>
+                    </div>
+                    <div id="psg-status" class="status"></div>
+                </form>
+            </div>
 
-            <div class="last-update" id="lastUpdate">
-                Cargando...
+            <!-- Inter Miami Tab -->
+            <div id="inter_miami-tab" class="tab-content">
+                <div class="team-header">
+                    <img src="../images/EscudoInt.png" alt="Inter Miami" class="team-logo">
+                    <div class="team-info">
+                        <h2>Inter Miami CF</h2>
+                        <p>2023 - presente</p>
+                    </div>
+                </div>
+                <form id="inter_miami-form">
+                    <div class="edit-grid">
+                        <div class="input-group">
+                            <label for="inter_miami-matches"><i class="fas fa-calendar-alt"></i> Partidos</label>
+                            <input type="number" id="inter_miami-matches" name="matches" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="inter_miami-goals"><i class="fas fa-futbol"></i> Goles</label>
+                            <input type="number" id="inter_miami-goals" name="goals" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="inter_miami-assists"><i class="fas fa-hands-helping"></i> Asistencias</label>
+                            <input type="number" id="inter_miami-assists" name="assists" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="inter_miami-titles"><i class="fas fa-trophy"></i> Títulos</label>
+                            <input type="number" id="inter_miami-titles" name="titles" required>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar Cambios
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="loadTeamData('inter_miami')">
+                            <i class="fas fa-undo"></i> Recargar
+                        </button>
+                    </div>
+                    <div id="inter_miami-status" class="status"></div>
+                </form>
+            </div>
+
+            <!-- Argentina Tab -->
+            <div id="argentina-tab" class="tab-content">
+                <div class="team-header">
+                    <img src="../images/EscudoAFA.png" alt="Argentina" class="team-logo">
+                    <div class="team-info">
+                        <h2>Selección Argentina</h2>
+                        <p>2005 - presente</p>
+                    </div>
+                </div>
+                <form id="argentina-form">
+                    <div class="edit-grid">
+                        <div class="input-group">
+                            <label for="argentina-matches"><i class="fas fa-calendar-alt"></i> Partidos</label>
+                            <input type="number" id="argentina-matches" name="matches" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="argentina-goals"><i class="fas fa-futbol"></i> Goles</label>
+                            <input type="number" id="argentina-goals" name="goals" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="argentina-assists"><i class="fas fa-hands-helping"></i> Asistencias</label>
+                            <input type="number" id="argentina-assists" name="assists" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="argentina-titles"><i class="fas fa-trophy"></i> Títulos</label>
+                            <input type="number" id="argentina-titles" name="titles" required>
+                        </div>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar Cambios
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="loadTeamData('argentina')">
+                            <i class="fas fa-undo"></i> Recargar
+                        </button>
+                    </div>
+                    <div id="argentina-status" class="status"></div>
+                </form>
             </div>
         </div>
     </div>
 
     <script>
-        let currentMode = 'view';
+        let statsData = null;
 
-        // Cargar estadísticas al inicio
-        window.addEventListener('load', () => {
-            loadStats();
+        // Tab switching
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.dataset.tab;
+
+                // Update active button
+                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
+
+                // Update active content
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(`${tabName}-tab`).classList.add('active');
+            });
         });
 
-        // Cambiar entre modo vista y edición
-        function switchMode(mode) {
-            currentMode = mode;
-            
-            // Actualizar botones
-            document.querySelectorAll('.mode-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Actualizar vistas
-            document.querySelector('.view-mode').classList.remove('active');
-            document.querySelector('.edit-mode').classList.remove('active');
-            
-            if (mode === 'view') {
-                document.querySelector('.view-mode').classList.add('active');
-            } else {
-                document.querySelector('.edit-mode').classList.add('active');
-                // Cargar valores actuales en los inputs
-                loadCurrentValuesToEdit();
-            }
-        }
-
-        // Cargar valores actuales para editar
-        function loadCurrentValuesToEdit() {
-            fetch('http://localhost:9000/api/stats')
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('edit-matches').value = data.career_totals.matches;
-                    document.getElementById('edit-goals').value = data.career_totals.goals;
-                    document.getElementById('edit-assists').value = data.career_totals.assists;
-                    document.getElementById('edit-titles').value = data.career_totals.titles;
-                })
-                .catch(err => console.error('Error:', err));
-        }
-
-        // Cargar y mostrar estadísticas
-        async function loadStats() {
+        // Load data on page load
+        async function loadData() {
             try {
-                const response = await fetch('http://localhost:9000/api/stats?' + new Date().getTime());
-                const data = await response.json();
-                
-                // Actualizar vista
-                document.getElementById('view-matches').textContent = data.career_totals.matches;
-                document.getElementById('view-goals').textContent = data.career_totals.goals;
-                document.getElementById('view-assists').textContent = data.career_totals.assists;
-                document.getElementById('view-titles').textContent = data.career_totals.titles;
-                
-                // Actualizar fecha
-                document.getElementById('lastUpdate').textContent = 
-                    `Última actualización: ${data.last_updated} (${data.source || 'manual'})`;
-                
-                showStatus('success', '✅ Datos cargados correctamente');
-                
+                const response = await fetch('/api/stats');
+                statsData = await response.json();
+
+                // Update totals display
+                document.getElementById('total-matches').textContent = statsData.career_totals.matches;
+                document.getElementById('total-goals').textContent = statsData.career_totals.goals;
+                document.getElementById('total-assists').textContent = statsData.career_totals.assists;
+                document.getElementById('total-titles').textContent = statsData.career_totals.titles;
+
+                // Load team data
+                loadTeamData('barcelona');
+                loadTeamData('psg');
+                loadTeamData('inter_miami');
+                loadTeamData('argentina');
             } catch (error) {
-                showStatus('error', '❌ Error al cargar los datos');
-                console.error(error);
+                console.error('Error loading data:', error);
             }
         }
 
-        // Guardar estadísticas editadas
-        async function saveStats() {
-            const matches = parseInt(document.getElementById('edit-matches').value);
-            const goals = parseInt(document.getElementById('edit-goals').value);
-            const assists = parseInt(document.getElementById('edit-assists').value);
-            const titles = parseInt(document.getElementById('edit-titles').value);
-            
-            if (!matches || !goals || !assists || !titles) {
-                showStatus('error', '❌ Por favor completa todos los campos');
-                return;
-            }
-            
-            showStatus('info', '💾 Guardando cambios...');
-            
-            try {
-                // Enviar al backend
-                const response = await fetch('http://localhost:9000/api/update', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        matches: matches,
-                        goals: goals,
-                        assists: assists,
-                        titles: titles
-                    })
-                });
-                
-                if (response.ok) {
+        // Load team data into form
+        function loadTeamData(team) {
+            if (!statsData || !statsData.teams[team]) return;
+
+            const teamData = statsData.teams[team];
+            document.getElementById(`${team}-matches`).value = teamData.matches;
+            document.getElementById(`${team}-goals`).value = teamData.goals;
+            document.getElementById(`${team}-assists`).value = teamData.assists;
+            document.getElementById(`${team}-titles`).value = teamData.titles;
+        }
+
+        // Handle form submissions
+        ['barcelona', 'psg', 'inter_miami', 'argentina'].forEach(team => {
+            document.getElementById(`${team}-form`).addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(e.target);
+                const data = {
+                    team: team,
+                    matches: parseInt(formData.get('matches')),
+                    goals: parseInt(formData.get('goals')),
+                    assists: parseInt(formData.get('assists')),
+                    titles: parseInt(formData.get('titles'))
+                };
+
+                const statusEl = document.getElementById(`${team}-status`);
+                statusEl.className = 'status';
+
+                try {
+                    const response = await fetch('/api/update-team', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
                     const result = await response.json();
-                    
-                    showStatus('success', '✅ ¡Cambios guardados! Todos los archivos actualizados.');
-                    
-                    // Actualizar vista
-                    document.getElementById('view-matches').textContent = matches;
-                    document.getElementById('view-goals').textContent = goals;
-                    document.getElementById('view-assists').textContent = assists;
-                    document.getElementById('view-titles').textContent = titles;
-                    
-                    // Volver al modo vista
-                    setTimeout(() => {
-                        switchMode('view');
-                        document.querySelectorAll('.mode-btn')[0].classList.add('active');
-                        document.querySelectorAll('.mode-btn')[1].classList.remove('active');
-                        loadStats(); // Recargar para ver la fecha actualizada
-                    }, 1500);
-                } else {
-                    showStatus('error', '❌ Error del servidor. Asegúrate de que el servidor esté corriendo.');
+
+                    if (result.success) {
+                        statusEl.className = 'status success';
+                        statusEl.textContent = `✅ ${result.message}`;
+
+                        // Reload data to update totals
+                        await loadData();
+                    } else {
+                        throw new Error(result.message || 'Error desconocido');
+                    }
+                } catch (error) {
+                    statusEl.className = 'status error';
+                    statusEl.textContent = `❌ Error: ${error.message}`;
                 }
-                
-            } catch (error) {
-                showStatus('error', '❌ Error de conexión. Ejecuta: python3 admin_server.py');
-                console.error(error);
-            }
-        }
+            });
+        });
 
-        // Cancelar edición
-        function cancelEdit() {
-            switchMode('view');
-            document.querySelectorAll('.mode-btn')[0].classList.add('active');
-            document.querySelectorAll('.mode-btn')[1].classList.remove('active');
-        }
-
-        // Abrir página principal
-        function openMainPage() {
-            window.open('../professional_stats.html', '_blank');
-        }
-
-        // Mostrar mensaje de estado
-        function showStatus(type, message) {
-            const status = document.getElementById('status');
-            status.className = `status ${type}`;
-            status.textContent = message;
-            
-            if (type !== 'info') {
-                setTimeout(() => {
-                    status.className = 'status';
-                }, 4000);
-            }
-        }
+        // Load data on page load
+        loadData();
     </script>
 </body>
+
 </html>

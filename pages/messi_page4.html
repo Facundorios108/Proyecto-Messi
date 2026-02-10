@@ -1,716 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messi en la Selección Argentina - Se le Dió</title>
-    <meta name="description" content="El sueño cumplido de Lionel Messi con la Selección Argentina: Copa América, Mundial y el reconocimiento eterno.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="El sueño cumplido de Lionel Messi con la Selección Argentina: Copa América, Mundial y el reconocimiento eterno.">
+    <meta name="theme-color" content="#75aadb">
+    <link rel="manifest" href="../manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #75aadb 0%, #5a8fc4 100%);
-            min-height: 100vh;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        .hero-section {
-            background: linear-gradient(rgba(117,170,219,0.9), rgba(90,143,196,0.9)), url('../images/MessiSeleccion.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 0 20px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .club-logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-            border: 3px solid rgba(255,255,255,0.3);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .club-logo img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #fff, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            opacity: 0.95;
-            color: #ffd700;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .hero-period {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            max-width: 650px;
-            margin: 0 auto 3rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-
-        .stats-container {
-            background: rgba(255,255,255,0.95);
-            margin: -100px auto 0;
-            max-width: 1200px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 10;
-            color: #333;
-            overflow: hidden;
-        }
-
-        .stats-header {
-            background: linear-gradient(135deg, #75aadb, #5a8fc4);
-            color: white;
-            padding: 3rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .stats-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.08"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.08"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-        }
-
-        .stats-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stats-header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 0;
-            padding: 0;
-        }
-
-        .stat-card {
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-right: 1px solid rgba(117,170,219,0.2);
-        }
-
-        .stat-card:last-child {
-            border-right: none;
-        }
-
-        .stat-card:hover {
-            background: linear-gradient(135deg, #75aadb 0%, #5a8fc4 100%);
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(117,170,219,0.4);
-        }
-
-        .stat-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #75aadb, #5a8fc4);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover .stat-icon {
-            background: rgba(255,255,255,0.2);
-            transform: scale(1.1);
-        }
-
-        .stat-icon i {
-            font-size: 2rem;
-            color: white;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #75aadb;
-            margin-bottom: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover .stat-number {
-            color: white;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover .stat-label {
-            color: rgba(255,255,255,0.9);
-        }
-
-        .achievements-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            text-align: center;
-        }
-
-        .achievements-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #75aadb;
-            margin-bottom: 1rem;
-        }
-
-        .achievements-subtitle {
-            font-size: 1.3rem;
-            color: #ffd700;
-            font-weight: 600;
-            margin-bottom: 3rem;
-        }
-
-        .trophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .trophy-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .trophy-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(117,170,219,0.3);
-        }
-
-        .trophy-item.highlight {
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            color: #333;
-            transform: scale(1.05);
-        }
-
-        .trophy-item.highlight:hover {
-            transform: scale(1.05) translateY(-10px);
-        }
-
-        .trophy-icon {
-            font-size: 3rem;
-            color: #ffd700;
-            margin-bottom: 1rem;
-        }
-
-        .trophy-item.highlight .trophy-icon {
-            color: #333;
-        }
-
-        .trophy-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .trophy-count {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #75aadb;
-        }
-
-        .trophy-item.highlight .trophy-count {
-            color: #333;
-        }
-
-        /* Estilos para Goles por Año - Argentina */
-        .argentina-goals-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            margin: 2rem 0;
-        }
-
-        .argentina-section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #75aadb;
-            text-align: center;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .argentina-section-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 3rem;
-            font-style: italic;
-        }
-
-        .argentina-timeline-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .argentina-stats-highlight {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .highlight-box {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(117,170,219,0.1);
-            min-width: 150px;
-            transition: all 0.3s ease;
-        }
-
-        .highlight-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(117,170,219,0.2);
-        }
-
-        .mundial-year {
-            border: 2px solid #75aadb;
-        }
-
-        .total-goals-arg {
-            border: 2px solid #75aadb;
-        }
-
-        .peak-year {
-            border: 2px solid #75aadb;
-        }
-
-        .highlight-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #75aadb;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .mundial-year .highlight-number {
-            color: #75aadb;
-        }
-
-        .peak-year .highlight-number {
-            color: #75aadb;
-        }
-
-        .highlight-label {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #333;
-            margin: 0.5rem 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .highlight-year {
-            font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
-        }
-
-        .argentina-chart-wrapper {
-            display: flex;
-            align-items: flex-end;
-            gap: 0.8rem;
-            background: white;
-            padding: 3rem 2rem 1rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(117,170,219,0.2);
-            position: relative;
-            margin-bottom: 3rem;
-            overflow-x: auto;
-            min-height: 400px;
-        }
-
-        .argentina-chart-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #75aadb, #42a5f5, #1976d2);
-            border-radius: 20px 20px 0 0;
-        }
-
-        .year-bar-arg {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 50px;
-        }
-
-        .year-bar-arg:hover {
-            transform: scale(1.05);
-        }
-
-
-
-        .bar-container-arg {
-            height: 300px;
-            width: 100%;
-            max-width: 45px;
-            display: flex;
-            align-items: flex-end;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .bar-arg {
-            width: 100%;
-            background: linear-gradient(180deg, #75aadb 0%, #42a5f5 50%, #1976d2 100%);
-            border-radius: 8px 8px 0 0;
-            position: relative;
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 4px 15px rgba(117,170,219,0.4);
-            animation: argGrowBar 1.5s ease-out forwards;
-        }
-
-        .copa-bar {
-            background: linear-gradient(180deg, #00bfa5 0%, #26a69a 50%, #00695c 100%) !important;
-            box-shadow: 0 6px 20px rgba(0,191,165,0.5) !important;
-        }
-
-        .mundial-bar {
-            background: linear-gradient(180deg, #ffd700 0%, #ffed4a 50%, #fff59d 100%) !important;
-            box-shadow: 0 6px 20px rgba(255,215,0,0.5) !important;
-        }
-
-        @keyframes argGrowBar {
-            from {
-                height: 0;
-            }
-            to {
-                height: var(--final-height);
-            }
-        }
-
-        .bar-arg[data-goals="0"] {
-            --final-height: 0%;
-            min-height: 0;
-        }
-
-        .bar-arg[data-goals="1"] {
-            --final-height: 6%;
-        }
-
-        .bar-arg[data-goals="2"] {
-            --final-height: 11%;
-        }
-
-        .bar-arg[data-goals="3"] {
-            --final-height: 17%;
-        }
-
-        .bar-arg[data-goals="4"] {
-            --final-height: 22%;
-        }
-
-        .bar-arg[data-goals="5"] {
-            --final-height: 28%;
-        }
-
-        .bar-arg[data-goals="6"] {
-            --final-height: 33%;
-        }
-
-        .bar-arg[data-goals="8"] {
-            --final-height: 44%;
-        }
-
-        .bar-arg[data-goals="9"] {
-            --final-height: 50%;
-        }
-
-        .bar-arg[data-goals="12"] {
-            --final-height: 67%;
-        }
-
-        .bar-arg[data-goals="18"] {
-            --final-height: 100%;
-        }
-
-        .bar-value-arg {
-            position: absolute;
-            top: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            font-weight: 800;
-            color: #75aadb;
-            background: white;
-            padding: 6px 10px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: 2px solid #75aadb;
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .year-label-arg {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .year-note {
-            font-size: 0.75rem;
-            color: #666;
-            text-align: center;
-            font-style: italic;
-            margin-top: 0.25rem;
-        }
-
-        .argentina-insights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .insight-card-arg {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(117,170,219,0.1);
-            border-left: 4px solid #75aadb;
-        }
-
-        .insight-card-arg h4 {
-            color: #75aadb;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .insight-card-arg p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .stats-container {
-                margin: -50px 20px 0;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .trophy-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-            
-            .argentina-section-title {
-                font-size: 2rem;
-            }
-            
-            .argentina-section-subtitle {
-                font-size: 1rem;
-            }
-            
-            .argentina-stats-highlight {
-                gap: 1rem;
-            }
-            
-            .highlight-box {
-                padding: 1.5rem;
-                min-width: 120px;
-            }
-            
-            .highlight-number {
-                font-size: 2.5rem;
-            }
-            
-            .argentina-chart-wrapper {
-                gap: 0.3rem;
-                padding: 2rem 1rem;
-                min-height: 250px;
-            }
-            
-            .year-bar-arg {
-                min-width: 25px;
-            }
-            
-            .bar-container-arg {
-                height: 180px;
-                max-width: 22px;
-                margin-bottom: 2rem;
-            }
-            
-            .bar-value-arg {
-                font-size: 0.65rem;
-                padding: 2px 4px;
-                top: -22px;
-            }
-            
-            .year-label-arg {
-                font-size: 0.65rem;
-            }
-            
-            .year-note {
-                font-size: 0.6rem;
-            }
-            
-            .argentina-insights {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .insight-card-arg {
-                padding: 1.25rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/team-page.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
 </head>
-<body>
-    <!-- Botón Volver -->
-    <div style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
-        <button onclick="history.back()" style="
-            background: rgba(255,255,255,0.9);
-            border: 2px solid #75aadb;
-            color: #75aadb;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-        " onmouseover="this.style.background='#75aadb'; this.style.color='white';" 
-           onmouseout="this.style.background='rgba(255,255,255,0.9)'; this.style.color='#75aadb';">
-            <i class="fas fa-arrow-left"></i>
-            Volver
-        </button>
-    </div>
+
+<body class="team-argentina">
+    <!-- Navbar -->
+    <nav class="main-navbar">
+        <a href="../index.html" class="navbar-brand">
+            Messi Stats
+        </a>
+        <ul class="navbar-links" id="navbar-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="messi_page.html">Barcelona</a></li>
+            <li><a href="messi_page2.html">PSG</a></li>
+            <li><a href="messi_page3.html">Inter Miami</a></li>
+            <li><a href="messi_page4.html" class="active">Argentina</a></li>
+        </ul>
+        <div class="navbar-actions">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema"><i
+                    class="fas fa-moon"></i></button>
+            <button class="navbar-hamburger" id="navbar-hamburger" aria-label="Menú"><i
+                    class="fas fa-bars"></i></button>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
             <div class="club-logo">
-                <img src="../images/EscudoAFA.png" alt="Selección Argentina">
+                <img src="../images/EscudoAFA.png" alt="Selección Argentina" loading="lazy">
             </div>
             <h1 class="hero-title">SELECCIÓN ARGENTINA</h1>
             <p class="hero-subtitle">¡Se le Dió! 🏆⭐⭐⭐</p>
             <p class="hero-period">2005 - presente</p>
             <p class="hero-description">
-                Después de años de sufrimiento y finales perdidas, Messi finalmente conquistó todo 
-                con su querida Argentina: Copa América 2021, Finalissima 2022 y la gloria máxima, 
+                Después de años de sufrimiento y finales perdidas, Messi finalmente conquistó todo
+                con su querida Argentina: Copa América 2021, Finalissima 2022 y la gloria máxima,
                 el Mundial de Qatar 2022. El sueño eterno se hizo realidad.
             </p>
         </div>
     </section>
 
     <!-- Stats Container -->
-    <div class="stats-container">
+    <div class="stats-container animate-on-scroll">
         <div class="stats-header">
             <h2>Estadísticas con Argentina</h2>
             <p>El legado completo del capitán eterno</p>
@@ -718,39 +64,28 @@
 
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-futbol"></i>
-                </div>
-                <div class="stat-number" id="argentina-matches">195</div>
+                <div class="stat-icon"><i class="fas fa-futbol"></i></div>
+                <div class="stat-number" id="argentina-matches">0</div>
                 <div class="stat-label">Partidos Jugados</div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-bullseye"></i>
-                </div>
-                <div class="stat-number" id="argentina-goals">114</div>
+                <div class="stat-icon"><i class="fas fa-bullseye"></i></div>
+                <div class="stat-number" id="argentina-goals">0</div>
                 <div class="stat-label">Goles Marcados</div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-hands-helping"></i>
-                </div>
-                <div class="stat-number" id="argentina-assists">61</div>
+                <div class="stat-icon"><i class="fas fa-hands-helping"></i></div>
+                <div class="stat-number" id="argentina-assists">0</div>
                 <div class="stat-label">Asistencias</div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <div class="stat-number" id="argentina-titles">6</div>
+                <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                <div class="stat-number" id="argentina-titles">0</div>
                 <div class="stat-label">Títulos Ganados</div>
             </div>
         </div>
 
-        <div class="achievements-section">
+        <div class="achievements-section animate-on-scroll">
             <h3 class="achievements-title">Logros con la Albiceleste</h3>
             <p class="achievements-subtitle">👑 El sueño cumplido de toda una nación</p>
             <div class="trophy-grid">
@@ -789,249 +124,65 @@
                     <div class="trophy-name">Balón de Oro Copa América</div>
                     <div class="trophy-count">2x</div>
                 </div>
-
-
             </div>
         </div>
 
-        <!-- Nueva sección: Goles por Año Calendario en Argentina -->
-        <div class="argentina-goals-section">
-            <h3 class="argentina-section-title">🇦🇷 Evolución de Goles por Año Calendario en la Selección Argentina</h3>
-            <p class="argentina-section-subtitle">20 años de historia: desde las promesas hasta la gloria mundial (2005-2025)</p>
-            
-            <div class="argentina-timeline-container">
-                <div class="argentina-stats-highlight">
-                    <div class="highlight-box mundial-year">
-                        <div class="highlight-number">7</div>
-                        <div class="highlight-label">Mundial</div>
-                        <div class="highlight-year">2022</div>
-                    </div>
-                    <div class="highlight-box total-goals-arg">
-                        <div class="highlight-number">114</div>
-                        <div class="highlight-label">Goles Totales</div>
-                        <div class="highlight-year">2005-2025</div>
-                    </div>
-                </div>
+        <!-- Argentina Highlights -->
+        <div class="goals-by-year-section animate-on-scroll">
+            <h3 class="section-title">🇦🇷 Evolución de Goles por Año en la Selección Argentina</h3>
+            <p class="section-subtitle">20 años de historia: desde las promesas hasta la gloria mundial (2005-2025)</p>
 
-                <div class="argentina-chart-wrapper">
-                    <div class="year-bar-arg" data-year="2005">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="0">
-                                <span class="bar-value-arg">0</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2005</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2006">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="2">
-                                <span class="bar-value-arg">2</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2006</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2007">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="6">
-                                <span class="bar-value-arg">6</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2007</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2008">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="2">
-                                <span class="bar-value-arg">2</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2008</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2009">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="3">
-                                <span class="bar-value-arg">3</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2009</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2010">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="2">
-                                <span class="bar-value-arg">2</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2010</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2011">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="4">
-                                <span class="bar-value-arg">4</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2011</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2012">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="12">
-                                <span class="bar-value-arg">12</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2012</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2013">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="6">
-                                <span class="bar-value-arg">6</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2013</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2014">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="8">
-                                <span class="bar-value-arg">8</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2014</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2015">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="4">
-                                <span class="bar-value-arg">4</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2015</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2016">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="8">
-                                <span class="bar-value-arg">8</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2016</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2017">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="4">
-                                <span class="bar-value-arg">4</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2017</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2018">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="4">
-                                <span class="bar-value-arg">4</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2018</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2019">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="5">
-                                <span class="bar-value-arg">5</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2019</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2020">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="1">
-                                <span class="bar-value-arg">1</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2020</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2021">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg copa-bar" data-goals="9">
-                                <span class="bar-value-arg">9</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2021</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2022">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg mundial-bar" data-goals="18">
-                                <span class="bar-value-arg">18</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2022</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2023">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="8">
-                                <span class="bar-value-arg">8</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2023</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2024">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="6">
-                                <span class="bar-value-arg">6</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2024</div>
-                    </div>
-                    
-                    <div class="year-bar-arg" data-year="2025">
-                        <div class="bar-container-arg">
-                            <div class="bar-arg" data-goals="2">
-                                <span class="bar-value-arg">2</span>
-                            </div>
-                        </div>
-                        <div class="year-label-arg">2025</div>
-                    </div>
+            <div class="argentina-stats-highlight">
+                <div class="highlight-box">
+                    <div class="highlight-number">18</div>
+                    <div class="highlight-label">Máximo en un año</div>
+                    <div class="highlight-year">2022 — Año del Mundial ⭐</div>
                 </div>
-
-                <div class="argentina-insights">
-                    <div class="insight-card-arg">
-                        <h4>🏆 El Momento Dorado (2021-2022)</h4>
-                        <p>Copa América y Mundial: los títulos que cambiarían su historia para siempre</p>
-                    </div>
-                    <div class="insight-card-arg">
-                        <h4>⭐ 2022: Año del Sueño Cumplido</h4>
-                        <p>18 goles incluyendo 7 en el Mundial de Qatar - El récord personal con Argentina</p>
-                    </div>
-                    <div class="insight-card-arg">
-                        <h4>👑 Legado Eterno</h4>
-                        <p>De las lágrimas del 2014 a la gloria del 2022: el capitán que nunca se rindió</p>
-                    </div>
+                <div class="highlight-box">
+                    <div class="highlight-number">115</div>
+                    <div class="highlight-label">Goles Totales</div>
+                    <div class="highlight-year">Máximo goleador histórico</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-number">196</div>
+                    <div class="highlight-label">Partidos</div>
+                    <div class="highlight-year">Más caps en la historia</div>
                 </div>
             </div>
 
+            <div class="chart-canvas-container">
+                <canvas id="goals-chart" data-team="argentina" height="400"></canvas>
+            </div>
+
+            <div class="argentina-insights">
+                <div class="insight-card-arg">
+                    <h4>📊 Mejor racha</h4>
+                    <p>En 2022, marcó 18 goles incluyendo los del camino al título mundial.</p>
+                </div>
+                <div class="insight-card-arg">
+                    <h4>🏆 Años dorados</h4>
+                    <p>2021 y 2024: campeón de Copa América. 2022: campeón del Mundo y Finalissima.</p>
+                </div>
+                <div class="insight-card-arg">
+                    <h4>⚡ Longevidad</h4>
+                    <p>20 años vistiendo la camiseta albiceleste, de juvenil a leyenda absoluta.</p>
+                </div>
             </div>
         </div>
     </div>
-    
-    <!-- Indicador de datos verificados -->
-    <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-top: 1px solid #e9ecef;">
-        <small id="last-updated" style="color: #666; font-size: 0.85rem;">
-            📊 Datos oficiales verificados con Wikipedia
-        </small>
+
+    <!-- Verified Footer -->
+    <div class="data-verified-footer">
+        <small id="last-updated">📊 Cargando datos...</small>
     </div>
 
-    <!-- Sistema de estadísticas dinámicas -->
-    <script src="../js/messi-stats-loader.js"></script>
+    <!-- Chatbot -->
+    <div id="chat-container" class="chat-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="../js/messi-data-loader.js"></script>
+    <script src="../js/chatbot.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,446 @@
+/* =====================================================
+   TEAM PAGE CSS — Per-team color overrides
+   Works with global.css via CSS custom properties
+   ===================================================== */
+
+/* --- Barcelona --- */
+body.team-barcelona {
+    --team-primary: #a50044;
+    --team-secondary: #004d98;
+    --team-gradient: linear-gradient(135deg, #a50044 0%, #004d98 100%);
+    --team-light: #fef0f5;
+    --team-accent: #a50044;
+    background: var(--team-gradient);
+    color: #fff;
+}
+
+body.team-barcelona .hero-section {
+    background: linear-gradient(rgba(165, 0, 68, 0.85), rgba(0, 77, 152, 0.85)), url('../images/MessiBarcelona.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+body.team-barcelona .hero-title {
+    /* Removed gradient background - using global white color */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+body.team-barcelona .hero-period {
+    color: #ffd700;
+}
+
+body.team-barcelona .club-logo {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+body.team-barcelona .stats-header {
+    background: var(--team-gradient);
+}
+
+body.team-barcelona .stat-icon {
+    background: var(--team-gradient);
+}
+
+body.team-barcelona .stat-number {
+    color: var(--team-primary);
+}
+
+body.team-barcelona .stat-card:hover {
+    background: var(--team-gradient);
+    color: white;
+    box-shadow: 0 15px 30px rgba(165, 0, 68, 0.3);
+}
+
+body.team-barcelona .stat-card:hover .stat-number {
+    color: white;
+}
+
+body.team-barcelona .stat-card {
+    border-right: 1px solid rgba(165, 0, 68, 0.1);
+}
+
+body.team-barcelona .achievements-title {
+    color: var(--team-primary);
+}
+
+body.team-barcelona .trophy-count {
+    color: var(--team-primary);
+}
+
+body.team-barcelona .trophy-item:hover {
+    box-shadow: 0 20px 40px rgba(165, 0, 68, 0.2);
+}
+
+body.team-barcelona .goals-by-year-section {
+    background: linear-gradient(135deg, #fef0f5 0%, #f0e6ff 100%);
+}
+
+body.team-barcelona .chart-canvas-container::before {
+    background: linear-gradient(90deg, #a50044, #004d98, #ffd700);
+}
+
+/* --- PSG --- */
+body.team-psg {
+    --team-primary: #004170;
+    --team-secondary: #002d4f;
+    --team-gradient: linear-gradient(135deg, #004170 0%, #002d4f 100%);
+    --team-light: #f0f8ff;
+    --team-accent: #004170;
+    background: var(--team-gradient);
+    color: #fff;
+}
+
+body.team-psg .hero-section {
+    background: linear-gradient(rgba(0, 65, 112, 0.9), rgba(0, 45, 79, 0.9)), url('../images/MessiPSG.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+body.team-psg .hero-title {
+    /* Removed gradient background - using global white color */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+body.team-psg .hero-period {
+    color: #ff6b6b;
+}
+
+body.team-psg .club-logo {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+body.team-psg .stats-header {
+    background: var(--team-gradient);
+}
+
+body.team-psg .stat-icon {
+    background: var(--team-gradient);
+}
+
+body.team-psg .stat-number {
+    color: var(--team-primary);
+}
+
+body.team-psg .stat-card:hover {
+    background: var(--team-gradient);
+    color: white;
+    box-shadow: 0 15px 30px rgba(0, 65, 112, 0.3);
+}
+
+body.team-psg .stat-card:hover .stat-number {
+    color: white;
+}
+
+body.team-psg .stat-card {
+    border-right: 1px solid rgba(0, 65, 112, 0.1);
+}
+
+body.team-psg .achievements-title {
+    color: var(--team-primary);
+}
+
+body.team-psg .trophy-count {
+    color: var(--team-primary);
+}
+
+body.team-psg .trophy-item:hover {
+    box-shadow: 0 20px 40px rgba(0, 65, 112, 0.2);
+}
+
+body.team-psg .goals-by-year-section {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+}
+
+body.team-psg .chart-canvas-container::before {
+    background: linear-gradient(90deg, #004170, #0066cc, #3399ff);
+}
+
+/* --- Inter Miami --- */
+body.team-inter_miami {
+    --team-primary: #e098b7;
+    --team-secondary: #F7B5CD;
+    --team-gradient: linear-gradient(135deg, #F7B5CD 0%, #e098b7 100%);
+    --team-light: #fff5f8;
+    --team-accent: #d1477a;
+    background: var(--team-gradient);
+    color: #333;
+}
+
+body.team-inter_miami .hero-section {
+    background: linear-gradient(rgba(247, 181, 205, 0.9), rgba(224, 152, 183, 0.9)), url('../images/messi_inter_miami_celebrando.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+body.team-inter_miami .hero-content {
+    color: #2d3748;
+}
+
+body.team-inter_miami .hero-title {
+    color: #2d3748;
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+body.team-inter_miami .hero-subtitle {
+    color: #2d3748;
+}
+
+body.team-inter_miami .hero-period {
+    color: #e098b7;
+}
+
+body.team-inter_miami .hero-description {
+    color: #2d3748;
+}
+
+body.team-inter_miami .club-logo {
+    background: rgba(255, 255, 255, 0.9);
+    border: 3px solid rgba(45, 55, 72, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.team-inter_miami .stats-header {
+    background: var(--team-gradient);
+    color: #2d3748;
+}
+
+body.team-inter_miami .stat-icon {
+    background: var(--team-gradient);
+}
+
+body.team-inter_miami .stat-icon i {
+    color: #2d3748;
+}
+
+body.team-inter_miami .stat-number {
+    color: var(--team-primary);
+}
+
+body.team-inter_miami .stat-card:hover {
+    background: var(--team-gradient);
+    color: #2d3748;
+    box-shadow: 0 15px 30px rgba(247, 181, 205, 0.4);
+}
+
+body.team-inter_miami .stat-card:hover .stat-number {
+    color: #2d3748;
+}
+
+body.team-inter_miami .stat-card {
+    border-right: 1px solid rgba(247, 181, 205, 0.3);
+}
+
+body.team-inter_miami .achievements-title {
+    color: var(--team-primary);
+}
+
+body.team-inter_miami .trophy-count {
+    color: var(--team-primary);
+}
+
+body.team-inter_miami .trophy-item:hover {
+    box-shadow: 0 20px 40px rgba(247, 181, 205, 0.3);
+}
+
+body.team-inter_miami .goals-by-year-section {
+    background: linear-gradient(135deg, #fff5f8 0%, #f0f9ff 100%);
+}
+
+body.team-inter_miami .chart-canvas-container::before {
+    background: linear-gradient(90deg, #f7b5cd, #e098b7, #d1477a);
+}
+
+/* --- Argentina --- */
+body.team-argentina {
+    --team-primary: #75aadb;
+    --team-secondary: #5a8fc4;
+    --team-gradient: linear-gradient(135deg, #75aadb 0%, #5a8fc4 100%);
+    --team-light: #e3f2fd;
+    --team-accent: #1976d2;
+    background: var(--team-gradient);
+    color: #fff;
+}
+
+body.team-argentina .hero-section {
+    background: linear-gradient(rgba(117, 170, 219, 0.9), rgba(90, 143, 196, 0.9)), url('../images/MessiSeleccion.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+body.team-argentina .hero-title {
+    /* Removed gradient background - using global white color */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+body.team-argentina .hero-subtitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.team-argentina .hero-period {
+    color: #fff;
+    opacity: 0.9;
+}
+
+body.team-argentina .hero-description {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+body.team-argentina .club-logo {
+    background: rgba(255, 255, 255, 0.95);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+body.team-argentina .stats-header {
+    background: var(--team-gradient);
+}
+
+body.team-argentina .stat-icon {
+    background: var(--team-gradient);
+}
+
+body.team-argentina .stat-number {
+    color: var(--team-primary);
+}
+
+body.team-argentina .stat-card:hover {
+    background: var(--team-gradient);
+    color: white;
+    box-shadow: 0 15px 30px rgba(117, 170, 219, 0.4);
+}
+
+body.team-argentina .stat-card:hover .stat-number {
+    color: white;
+}
+
+body.team-argentina .stat-card {
+    border-right: 1px solid rgba(117, 170, 219, 0.2);
+}
+
+body.team-argentina .achievements-title {
+    color: var(--team-primary);
+}
+
+body.team-argentina .achievements-subtitle {
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 3rem;
+}
+
+body.team-argentina .trophy-count {
+    color: var(--team-primary);
+}
+
+body.team-argentina .trophy-item:hover {
+    box-shadow: 0 20px 40px rgba(117, 170, 219, 0.3);
+}
+
+body.team-argentina .goals-by-year-section {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+body.team-argentina .chart-canvas-container::before {
+    background: linear-gradient(90deg, #75aadb, #42a5f5, #1976d2);
+}
+
+/* --- Argentina Specific Elements --- */
+body.team-argentina .argentina-stats-highlight {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+body.team-argentina .highlight-box {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(117, 170, 219, 0.1);
+    min-width: 150px;
+    transition: all 0.3s ease;
+    border: 2px solid #75aadb;
+}
+
+body.team-argentina .highlight-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(117, 170, 219, 0.2);
+}
+
+body.team-argentina .highlight-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #75aadb;
+}
+
+body.team-argentina .highlight-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+body.team-argentina .highlight-year {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* --- Argentina Insights --- */
+body.team-argentina .argentina-insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+body.team-argentina .insight-card-arg {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(117, 170, 219, 0.1);
+    border-left: 4px solid #75aadb;
+}
+
+body.team-argentina .insight-card-arg h4 {
+    color: #75aadb;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+body.team-argentina .insight-card-arg p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* --- Responsive for Argentina highlights --- */
+@media (max-width: 768px) {
+    body.team-argentina .argentina-stats-highlight {
+        gap: 1rem;
+    }
+
+    body.team-argentina .highlight-box {
+        padding: 1.5rem;
+        min-width: 120px;
+    }
+
+    body.team-argentina .highlight-number {
+        font-size: 2.5rem;
+    }
+
+    body.team-argentina .argentina-insights {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
