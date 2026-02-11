@@ -16,7 +16,9 @@ from datetime import datetime
 from urllib.parse import urlparse, parse_qs
 import base64
 
-PORT = int(os.environ.get('PORT', 8888))
+# Handle PORT environment variable (Render may set it to empty string)
+port_env = os.environ.get('PORT', '8888')
+PORT = int(port_env) if port_env else 8888
 ADMIN_USER = os.environ.get('ADMIN_USER', 'admin')
 ADMIN_PASS = os.environ.get('ADMIN_PASS', 'messi10')
 STATS_FILE = 'js/messi-stats.json'
