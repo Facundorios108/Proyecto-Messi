@@ -37,9 +37,15 @@
 
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/MessiSeleccion.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
             height: 70vh;
             color: white;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-content h1 {
@@ -347,11 +353,57 @@
             .teams-grid {
                 grid-template-columns: 1fr;
             }
+
+            .team-stat {
+                padding: 0.75rem 0.25rem;
+            }
+
+            .team-stat-number {
+                font-size: 1.1rem;
+            }
+
+            .team-stat-label {
+                font-size: 0.65rem;
+            }
         }
 
         @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section {
+                height: 60vh;
+            }
+
             .index-stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .stats-dashboard {
+                padding: 1.5rem;
+                margin: -2rem 0.5rem 1.5rem;
+            }
+
+            .team-card-header {
+                padding: 1rem;
+            }
+
+            .team-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .team-info .team-name {
+                font-size: 1rem;
+            }
+
+            .team-info .team-period {
+                font-size: 0.75rem;
             }
         }
     </style>
