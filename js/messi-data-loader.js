@@ -11,12 +11,9 @@
   let messiData = null;
 
   function getDataPath() {
-    // Detect if we're in /pages/ subdirectory
-    const path = window.location.pathname;
-    if (path.includes('/pages/')) {
-      return '../js/messi-stats.json';
-    }
-    return 'js/messi-stats.json';
+    // Use API endpoint for consistent data access
+    // Works in both development and production
+    return '/api/stats';
   }
 
   /** Fetch and cache data */
@@ -29,7 +26,8 @@
       window.messiData = messiData; // expose globally for chatbot
       return messiData;
     } catch (err) {
-      console.warn('⚠️ Could not load messi-stats.json:', err.message);
+      console.error('⚠️ Could not load stats data:', err.message);
+      console.error('Attempted to fetch from:', DATA_PATH);
       return null;
     }
   }
@@ -60,7 +58,7 @@
 
     const teamMap = {
       'barcelona': ['barca-matches', 'barca-goals', 'barca-assists', 'barca-titles'],
-      'psg':       ['psg-matches', 'psg-goals', 'psg-assists', 'psg-titles'],
+      'psg': ['psg-matches', 'psg-goals', 'psg-assists', 'psg-titles'],
       'inter_miami': ['inter-matches', 'inter-goals', 'inter-assists', 'inter-titles'],
       'argentina': ['argentina-matches', 'argentina-goals', 'argentina-assists', 'argentina-titles']
     };
@@ -182,7 +180,7 @@
             padding: 12,
             cornerRadius: 8,
             callbacks: {
-              label: function(context) {
+              label: function (context) {
                 return `${context.parsed.y} goles`;
               }
             }
@@ -273,7 +271,7 @@
   function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
       const swPath = window.location.pathname.includes('/pages/') ? '../service-worker.js' : 'service-worker.js';
-      navigator.serviceWorker.register(swPath).catch(() => {});
+      navigator.serviceWorker.register(swPath).catch(() => { });
     }
   }
 
